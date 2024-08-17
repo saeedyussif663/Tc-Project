@@ -12,7 +12,7 @@ export default function Benefits() {
         <h2 className="text-center text-4xl font-bold text-[#040815]">
           Easy, Simple, Affordable
         </h2>
-        <p className="text-stormy-sltae max-w-[712px] text-center text-[20px]">
+        <p className="text-stormy-slate max-w-[712px] text-center text-[20px]">
           Our platform helps your business in managing expenses. These are some
           of the reasons why you should use our platform in managing your
           events.

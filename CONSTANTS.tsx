@@ -9,6 +9,11 @@ export interface FAQs {
   answer: string;
 }
 
+export interface Links {
+  header: string;
+  sublinks: string[];
+}
+
 export const benefits: Benefits[] = [
   {
     heading: 'Browse upcoming and view event details',
@@ -47,5 +52,32 @@ export const faqs: FAQs[] = [
     question: 'What is a wireframe?',
     answer:
       'UX design stands for User Experience design. It is the process of designing digital or physical products that are easy to use, intuitive, and enjoyable for the user.',
+  },
+];
+
+export const links: Links[] = [
+  {
+    header: 'Product',
+    sublinks: [
+      'Event Planning',
+      'Ticket Purchasing',
+      'Monitarization',
+      'Virtual Assistant',
+      'Artificial Intelligence',
+    ],
+  },
+  {
+    header: 'Company',
+    sublinks: [
+      'About Us',
+      'Newsletters',
+      'Our Partners',
+      'Career',
+      'Contact Us',
+    ],
+  },
+  {
+    header: 'Resources',
+    sublinks: ['Blog', 'Pricing', 'FAQ', 'Events', 'Ebook & Guide'],
   },
 ];

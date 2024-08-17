@@ -1,5 +1,6 @@
 import Benefits from '@/components/landing/Benefits';
 import FAQs from '@/components/landing/FAQs';
+import Footer from '@/components/landing/Footer';
 import HeroSection from '@/components/landing/HeroSection';
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
       <HeroSection />
       <Benefits />
       <FAQs />
+      <Footer />
     </main>
   );
 }

@@ -25,7 +25,7 @@ const config = {
         'red-secondary': '#F2545B',
         'gray-fade': '#90A3BF',
         'green-light': '#76B49A',
-        'stormy-sltae': '#596780',
+        'stormy-slate': '#596780',
         'blush-pink': '#FFF4F4',
       },
       fontFamily: {

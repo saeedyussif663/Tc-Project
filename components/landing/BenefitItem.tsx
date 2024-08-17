@@ -8,7 +8,7 @@ export default function BenefitItem({ heading, text, icon_name }: Benefits) {
       </div>
       <div className="flex w-4/5 flex-col">
         <h5 className="text-[20px] font-semibold">{heading}</h5>
-        <p className="text-stormy-sltae">{text}</p>
+        <p className="text-stormy-slate">{text}</p>
       </div>
     </div>
   );
