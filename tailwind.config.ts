@@ -25,6 +25,7 @@ const config = {
         'red-secondary': '#F2545B',
         'gray-fade': '#90A3BF',
         'green-light': '#76B49A',
+        'stormy-sltae': '#596780',
       },
       fontFamily: {
         'space-grotesk': ['var(--font-space_grotesk)'],

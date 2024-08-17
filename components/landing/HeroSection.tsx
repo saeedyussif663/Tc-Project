@@ -19,9 +19,9 @@ export default function HeroSection() {
         </button>
       </article>
       <section className="w-6xl mx-auto mt-16 flex flex-col flex-wrap items-center justify-between gap-x-6 gap-y-12 px-4 sm:px-8 md:flex-row">
-        <EventCard color="red-secondary" />
-        <EventCard color="black" />
-        <EventCard color="green-light" />
+        <EventCard color="bg-red-secondary" />
+        <EventCard color="bg-black" />
+        <EventCard color="bg-green-light" />
       </section>
       <section className="mx-auto mt-14 flex max-w-6xl flex-col items-center justify-between gap-6">
         <h3 className="font-open-sans text-center text-xl font-semibold sm:text-4xl">
