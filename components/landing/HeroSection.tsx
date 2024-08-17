@@ -3,7 +3,7 @@ import EventCard from './EventCard';
 
 export default function HeroSection() {
   return (
-    <section className="px-4 font-sans-jarkata sm:px-8">
+    <section className="px-4 font-sans-jarkata md:px-8">
       <article className="mx-auto flex flex-col items-center gap-10 pt-6 leading-relaxed sm:max-w-[90%] sm:pt-16">
         <h1 className="text-center text-4xl font-bold sm:max-w-5xl sm:text-7xl">
           Unlock Your Next Adventure with Tickets.

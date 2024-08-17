@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function Benefits() {
   return (
-    <section className="mx-auto mt-16 flex max-w-6xl flex-col gap-10 px-4 font-sans-jarkata sm:px-0">
+    <section className="mx-auto mt-16 flex max-w-6xl flex-col gap-10 px-4 font-sans-jarkata md:px-8">
       <article className="flex flex-col items-center justify-center gap-4">
         <h5 className="text-[20px] font-semibold text-red-secondary">
           WHY TC TICKET
@@ -18,13 +18,13 @@ export default function Benefits() {
           events.
         </p>
       </article>
-      <article className="flex flex-col justify-between gap-x-5 gap-y-10 sm:flex-row">
+      <article className="flex flex-col justify-between gap-x-5 gap-y-10 md:flex-row">
         <div className="flex w-full flex-col gap-6 md:w-1/2">
           {benefits.map((benefit, index) => (
             <BenefitItem key={index} {...benefit} />
           ))}
         </div>
-        <div className="relative h-[350px] w-full rounded-xl bg-[#F3F5F7] sm:w-1/2">
+        <div className="relative h-[350px] w-full rounded-xl bg-[#F3F5F7] md:w-1/2">
           <div className="absolute left-10 top-10 h-[80%] w-full">
             <Image src="/images/benefits.png" alt="benefits" fill />
           </div>

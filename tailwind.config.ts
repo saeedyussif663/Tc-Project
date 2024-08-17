@@ -26,6 +26,7 @@ const config = {
         'gray-fade': '#90A3BF',
         'green-light': '#76B49A',
         'stormy-sltae': '#596780',
+        'blush-pink': '#FFF4F4',
       },
       fontFamily: {
         'space-grotesk': ['var(--font-space_grotesk)'],
