@@ -27,7 +27,7 @@ export default function FAQs() {
               key={index}
               className="boder-b-0 rounded-md bg-blush-pink px-6"
             >
-              <AccordionTrigger className="text-base font-semibold md:text-xl">
+              <AccordionTrigger className="text-base font-semibold md:text-xl 2xl:h-[100px]">
                 {faq.question}
               </AccordionTrigger>
               <AccordionContent className="text-base md:text-lg">

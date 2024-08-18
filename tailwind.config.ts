@@ -27,6 +27,7 @@ const config = {
         'green-light': '#76B49A',
         'stormy-slate': '#596780',
         'blush-pink': '#FFF4F4',
+        black100: '#1C1C1C',
       },
       fontFamily: {
         'space-grotesk': ['var(--font-space_grotesk)'],
