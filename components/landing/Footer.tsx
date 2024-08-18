@@ -1,6 +1,7 @@
-import { links } from '@/CONSTANTS';
 import Image from 'next/image';
-import FooterLinkItem from './FooterLinkItem';
+import UsefulLinks from './UsefulLinks';
+import { contactUs } from '@/CONSTANTS';
+import ContactUs from './ContactUs';
 
 export default function Footer() {
   return (
@@ -11,14 +12,14 @@ export default function Footer() {
             <Image src="/logo.png" alt="Logo" width={49} height={49} />
             <h4 className="font-space-grotesk text-xl font-bold">Tc Ticket</h4>
           </div>
-          <p className="text-stormy-slate mt-2 w-48 font-sans-jarkata text-lg">
+          <p className="mt-2 w-48 font-sans-jarkata text-lg text-stormy-slate">
             Data visualization, and expense management for your business.
           </p>
         </article>
-        <article className="flex gap-4 md:gap-12">
-          {links.map((link, index) => (
-            <FooterLinkItem {...link} key={index} />
-          ))}
+        <article className="flex items-baseline gap-4 font-sans-jarkata md:gap-12">
+          {/* links */}
+          <UsefulLinks />
+          <ContactUs />
         </article>
       </section>
       <article className="mt-4 flex justify-between font-sans-jarkata">
@@ -29,7 +30,7 @@ export default function Footer() {
           <p className="hidden md:block">|</p>
           <p>Cookie Policy</p>
         </div>
-        <p className="text-stormy-slate font-medium">© Tc Ticket 2024</p>
+        <p className="font-medium text-stormy-slate">© Tc Ticket 2024</p>
       </article>
     </footer>
   );

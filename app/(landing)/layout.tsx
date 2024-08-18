@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
         className={`${space_grotesk.variable} ${jakarta_sans.variable} ${open_sans.variable} mx-auto max-w-7xl overflow-x-hidden`}
       >

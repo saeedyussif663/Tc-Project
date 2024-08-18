@@ -4,7 +4,10 @@ import Image from 'next/image';
 
 export default function Benefits() {
   return (
-    <section className="mx-auto mt-16 flex max-w-6xl flex-col gap-10 px-4 font-sans-jarkata md:px-8">
+    <section
+      id="About"
+      className="mx-auto mt-16 flex max-w-6xl flex-col gap-10 px-4 font-sans-jarkata md:px-8"
+    >
       <article className="flex flex-col items-center justify-center gap-4">
         <h5 className="text-[20px] font-semibold text-red-secondary">
           WHY TC TICKET
@@ -12,7 +15,7 @@ export default function Benefits() {
         <h2 className="text-center text-4xl font-bold text-[#040815]">
           Easy, Simple, Affordable
         </h2>
-        <p className="text-stormy-slate max-w-[712px] text-center text-[20px]">
+        <p className="max-w-[712px] text-center text-[20px] text-stormy-slate">
           Our platform helps your business in managing expenses. These are some
           of the reasons why you should use our platform in managing your
           events.

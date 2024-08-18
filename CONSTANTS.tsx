@@ -9,7 +9,7 @@ export interface FAQs {
   answer: string;
 }
 
-export interface Links {
+export interface UsefulLink {
   header: string;
   sublinks: string[];
 }
@@ -55,29 +55,19 @@ export const faqs: FAQs[] = [
   },
 ];
 
-export const links: Links[] = [
-  {
-    header: 'Product',
-    sublinks: [
-      'Event Planning',
-      'Ticket Purchasing',
-      'Monitarization',
-      'Virtual Assistant',
-      'Artificial Intelligence',
-    ],
-  },
-  {
-    header: 'Company',
-    sublinks: [
-      'About Us',
-      'Newsletters',
-      'Our Partners',
-      'Career',
-      'Contact Us',
-    ],
-  },
-  {
-    header: 'Resources',
-    sublinks: ['Blog', 'Pricing', 'FAQ', 'Events', 'Ebook & Guide'],
-  },
-];
+export const usefulLinks: UsefulLink = {
+  header: 'Useful Links',
+  sublinks: ['Home', 'About', 'Blog', 'FAQs'],
+};
+
+export const contactUs = {
+  header: 'Contact Us',
+  sublinks: [
+    {
+      link: 'info.tcticket@gmail.com',
+      icon: 'mail.svg',
+    },
+    { link: '+233 456 789 876', icon: 'telephone.svg' },
+    { link: 'Accra-Ghana', icon: 'location.svg' },
+  ],
+};
