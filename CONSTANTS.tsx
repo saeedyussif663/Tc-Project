@@ -9,6 +9,17 @@ export interface FAQs {
   answer: string;
 }
 
+export interface Inputs {
+  name: string;
+  email: string;
+  password: string;
+  number: string;
+}
+
+export const Regex = {
+  emailRegex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+};
+
 export interface UsefulLink {
   header: string;
   sublinks: string[];

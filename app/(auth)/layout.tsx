@@ -21,6 +21,7 @@ const jakarta_sans = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: 'Tc Project | Auth',
   description: 'An event ticketing platform',
+  metadataBase: new URL('https://tc-project-phi.vercel.app'),
 };
 
 export default function RootLayout({
@@ -33,7 +34,7 @@ export default function RootLayout({
       <body
         className={`${space_grotesk.variable} ${jakarta_sans.variable} ${open_sans.variable} mx-auto max-w-7xl overflow-x-hidden`}
       >
-        <main className="flex h-screen w-full justify-between gap-12 px-6">
+        <main className="flex h-screen w-full justify-between gap-12 px-2 md:px-6">
           <AuthLayout />
           {children}
         </main>

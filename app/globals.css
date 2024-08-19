@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .input {
+    @apply border-black100 text-black100 rounded-md border border-opacity-10 px-4 py-1 text-opacity-40 outline-none;
+  }
+}
+
 .hero-height {
   height: calc(100vh - 100px);
 }
