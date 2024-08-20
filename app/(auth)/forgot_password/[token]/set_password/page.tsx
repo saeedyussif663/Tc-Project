@@ -3,7 +3,9 @@
 import AgreeTerms from '@/components/auth/AgreeTerms';
 import AuthHeader from '@/components/auth/AuthHeader';
 import Button from '@/components/auth/Button';
-import { useState } from 'react';
+import PasswordScore from '@/components/auth/PasswordScore';
+import { passwordScorer } from 'password-scorer';
+import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FaRegEyeSlash } from 'react-icons/fa';
 import { IoEyeOutline } from 'react-icons/io5';
@@ -18,6 +20,8 @@ export default function page() {
   const [confirmPasswordIsShowing, setConfirmPasswordIsShowing] =
     useState(false);
   const [isChecked, setIsChecked] = useState<boolean>(false);
+  const [score, setScore] = useState(0);
+  const [password, setPassword] = useState('');
 
   const {
     register,
@@ -29,57 +33,54 @@ export default function page() {
     console.log(data);
   };
 
+  useEffect(() => {
+    const result = passwordScorer(password, 'en');
+    setScore(result.score);
+  }, [password]);
+
   return (
     <section className="flex h-auto w-full items-center justify-start font-open-sans md:my-auto md:h-[94%] md:w-1/2">
       <article className="flex h-full w-full flex-col items-center justify-start gap-5 pt-20 md:w-[70%] md:justify-center md:pt-0">
         <AuthHeader
           title="Setup New Password"
-          desc="Have you already reset the password ? Sign in"
+          desc="Have you already reset the password ?"
         />
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex w-full flex-col gap-5"
         >
-          <div className="relative w-full">
-            <input
-              type={isPasswordShowing ? 'text' : 'password'}
-              placeholder="Password"
-              className="input w-full"
-              {...register('password')}
-            />
+          <div className="w-full">
+            <div className="relative">
+              <input
+                type={isPasswordShowing ? 'text' : 'password'}
+                placeholder="Password"
+                className="input w-full"
+                {...register('password')}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              {isPasswordShowing ? (
+                <FaRegEyeSlash
+                  size={19}
+                  className="absolute bottom-2 right-4 cursor-pointer text-black100 text-opacity-40"
+                  onClick={() => setIsPasswordShowing((prev) => !prev)}
+                />
+              ) : (
+                <IoEyeOutline
+                  size={19}
+                  className="absolute bottom-2 right-4 cursor-pointer text-black100 text-opacity-40"
+                  onClick={() => setIsPasswordShowing((prev) => !prev)}
+                />
+              )}
+            </div>
+
             <div className="mt-4">
-              <div className="flex gap-1">
-                <div className="h-1 w-1/4 rounded-md bg-black100 opacity-10">
-                  <span className="flex h-full w-0 rounded-md bg-green-500"></span>
-                </div>
-                <div className="h-1 w-1/4 rounded-md bg-black100 opacity-10">
-                  <span className="flex h-full w-0 rounded-md bg-green-500"></span>
-                </div>
-                <div className="h-1 w-1/4 rounded-md bg-black100 opacity-10">
-                  <span className="flex h-full w-0 rounded-md bg-green-500"></span>
-                </div>
-                <div className="h-1 w-1/4 rounded-md bg-black100 opacity-10">
-                  <span className="flex h-full w-0 rounded-md bg-green-500"></span>
-                </div>
-              </div>
+              <PasswordScore score={score} />
               <p className="mt-2 text-xs text-black100 opacity-40">
                 Use 8 or more characters with a mix of letters, numbers &
                 symbols.
               </p>
             </div>
-            {isPasswordShowing ? (
-              <FaRegEyeSlash
-                size={19}
-                className="absolute bottom-16 right-4 cursor-pointer text-black100 text-opacity-40 md:bottom-[50px]"
-                onClick={() => setIsPasswordShowing((prev) => !prev)}
-              />
-            ) : (
-              <IoEyeOutline
-                size={19}
-                className="absolute bottom-16 right-4 cursor-pointer text-black100 text-opacity-40 md:bottom-[50px]"
-                onClick={() => setIsPasswordShowing((prev) => !prev)}
-              />
-            )}
           </div>
           <div className="relative w-full">
             <input
@@ -103,7 +104,9 @@ export default function page() {
             )}
           </div>
           <AgreeTerms isChecked={isChecked} setIsChecked={setIsChecked} />
-          <Button state={isChecked}>Submit</Button>
+          <Button state={isChecked} score={score}>
+            Submit
+          </Button>
         </form>
       </article>
     </section>

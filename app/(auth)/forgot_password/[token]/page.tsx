@@ -45,7 +45,7 @@ export default function page() {
               <InputOTPSlot index={3} />
             </InputOTPGroup>
           </InputOTP>
-          <Button state={true}>Submit</Button>
+          <Button>Submit</Button>
           <p className="text-black100 text-opacity-40">
             Didn&apos;t get the code ?{' '}
             <span className="text-red-secondary">Resend</span> or{' '}

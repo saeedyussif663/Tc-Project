@@ -21,7 +21,7 @@ const jakarta_sans = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: 'Tc Project',
   description: 'An event ticketing platform',
-  metadataBase: new URL('https://tc-project-phi.vercel.app'),
+  metadataBase: new URL('http://localhost:3000'),
 };
 
 export default function RootLayout({

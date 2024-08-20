@@ -62,7 +62,7 @@ export default function SigninForm() {
       >
         Forgot Password?
       </Link>
-      <Button state={true}>Sign In</Button>
+      <Button>Sign In</Button>
       <span className="text-center text-black100 text-opacity-40">
         Not a Member yet?{' '}
         <Link href="/signup" className="text-sm text-red-secondary">

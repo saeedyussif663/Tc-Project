@@ -38,7 +38,7 @@ export default function page() {
             className="input mb-2 py-2"
             {...register('email')}
           />
-          <Button state={true}>Submit</Button>
+          <Button>Submit</Button>
         </form>
         <button
           className="text-sm text-red-secondary"

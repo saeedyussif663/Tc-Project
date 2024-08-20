@@ -6,9 +6,9 @@ export default function AuthHeader({
   desc: string;
 }) {
   return (
-    <div className="flex flex-col items-center gap-2 text-black100">
+    <div className="flex flex-col items-center justify-center gap-2 text-black100">
       <h1 className="text-2xl font-semibold">{title}</h1>
-      <p className="opacity-40">{desc}</p>
+      <p className="text-center opacity-40">{desc}</p>
     </div>
   );
 }
