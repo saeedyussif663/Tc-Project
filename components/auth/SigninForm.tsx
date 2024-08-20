@@ -26,7 +26,7 @@ export default function SigninForm() {
 
   return (
     <form
-      className="mt-1 flex w-full flex-col gap-4 px-2"
+      className="mt-1 flex w-full flex-col gap-6 px-2"
       onSubmit={handleSubmit(onSubmit)}
     >
       <input

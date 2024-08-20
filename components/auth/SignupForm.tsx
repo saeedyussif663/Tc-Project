@@ -30,7 +30,7 @@ export default function SignupForm() {
       className="mt-1 flex w-full flex-col gap-3 px-2"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="flex w-full flex-col gap-5">
+      <div className="flex w-full flex-col gap-6 md:gap-5">
         <input
           type="text"
           placeholder="Full Name"
