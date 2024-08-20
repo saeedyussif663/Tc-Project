@@ -11,7 +11,7 @@ export default function Button({
     <button
       disabled={!state}
       type="submit"
-      className={`mt-1 bg-black100 ${!state && 'cursor-not-allowed'} rounded-lg py-2 text-white`}
+      className={`mt-1 bg-black100 ${!state && 'cursor-not-allowed'} w-full rounded-lg py-2 text-white`}
     >
       {children}
     </button>
