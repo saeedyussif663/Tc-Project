@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Space_Grotesk, Plus_Jakarta_Sans, Open_Sans } from 'next/font/google';
 import '../globals.css';
-import Header from '@/components/landing/Header';
 
 const space_grotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -34,7 +33,6 @@ export default function RootLayout({
       <body
         className={`${space_grotesk.variable} ${jakarta_sans.variable} ${open_sans.variable} mx-auto max-w-7xl overflow-x-hidden`}
       >
-        <Header />
         {children}
       </body>
     </html>
