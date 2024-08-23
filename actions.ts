@@ -103,17 +103,21 @@ export async function sendOTTp(
 
   const res = await response.json();
 
+  console.log(res);
+
   if (response.status === 400) {
     return { message: res.user_msg };
   }
 
   if (response.status === 200) {
-    redirect('/login');
+    redirect('/signin');
   }
 
   if (!res.ok) {
     return { message: 'An error occured try again' };
   }
+
+  console.log(res);
 
   return { message: '' };
 }
