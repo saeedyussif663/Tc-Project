@@ -10,15 +10,16 @@ export interface FAQs {
 }
 
 export interface Inputs {
-  name: string;
   email: string;
+  name: string;
+  phone_number: string;
   password: string;
-  number: string;
 }
 
-export const Regex = {
-  emailRegex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-};
+export interface sessionCookie {
+  phone_number: string;
+  token: string;
+}
 
 export interface UsefulLink {
   header: string;

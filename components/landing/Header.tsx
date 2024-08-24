@@ -43,11 +43,11 @@ export default function Header() {
         </ul>
       </nav>
       <div className="hidden items-center gap-5 font-sans-jarkata md:flex">
-        <Link href="/login" className="text-lg font-medium">
+        <Link href="/signin" className="text-lg font-medium">
           Login
         </Link>
         <Link
-          href="/sign-up"
+          href="/signup"
           className="rounded-lg bg-red-secondary px-6 py-3 font-semibold text-white"
         >
           Sing up

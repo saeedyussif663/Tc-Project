@@ -1,15 +1,21 @@
 'use client';
 
 import Link from 'next/link';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import Button from './Button';
 import { FaRegEyeSlash } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import { IoEyeOutline } from 'react-icons/io5';
 import AgreeTerms from './AgreeTerms';
-import { Inputs } from '@/CONSTANTS';
 import { passwordScorer } from 'password-scorer';
 import PasswordScore from './PasswordScore';
+import { useRouter } from 'next/navigation';
+import { createUserAction } from '@/actions';
+import Button from './Button';
+import { useFormState } from 'react-dom';
+import { SignupButton } from './Button';
+
+const initialState = {
+  message: '',
+};
 
 export default function SignupForm() {
   const [isPasswordShowing, setIsPasswordShowing] = useState<boolean>(false);
@@ -17,17 +23,9 @@ export default function SignupForm() {
   const [password, setPassword] = useState('');
   const [score, setScore] = useState(0);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<Inputs>();
+  const [state, formAction] = useFormState(createUserAction, initialState);
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    const { email, name, number, password } = data;
-
-    console.log(data);
-  };
+  const router = useRouter();
 
   useEffect(() => {
     const result = passwordScorer(password, 'en');
@@ -35,29 +33,42 @@ export default function SignupForm() {
   }, [password]);
 
   return (
-    <form
-      className="mt-1 flex w-full flex-col gap-3 px-2"
-      onSubmit={handleSubmit(onSubmit)}
-    >
+    <form action={formAction} className="mt-1 flex w-full flex-col gap-3 px-2">
       <div className="flex w-full flex-col gap-6 md:gap-5">
         <input
           type="text"
           placeholder="Full Name"
           className="input"
-          {...register('name')}
+          name="name"
+          required
+          autoComplete="off"
         />
         <input
           type="email"
           placeholder="Email"
           className="input"
-          {...register('email')}
+          name="email"
+          required
+          autoComplete="off"
         />
+
+        <input
+          type="text"
+          placeholder="Phone Number"
+          className="input"
+          name="phone_number"
+          required
+          autoComplete="off"
+        />
+
         <div className="relative w-full">
           <input
             type={isPasswordShowing ? 'text' : 'password'}
             placeholder="Password"
             className="input w-full"
-            {...register('password')}
+            name="password"
+            required
+            autoComplete="off"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -75,13 +86,6 @@ export default function SignupForm() {
             />
           )}
         </div>
-
-        <input
-          type="text"
-          placeholder="Phone Number"
-          className="input"
-          {...register('number')}
-        />
       </div>
 
       <div>
@@ -89,13 +93,15 @@ export default function SignupForm() {
         <p className="mt-2 text-xs text-black100 opacity-40">
           Use 8 or more characters with a mix of letters, numbers & symbols.
         </p>
+        {state?.message && (
+          <p className="mt-4 text-sm text-red-secondary">{state.message}</p>
+        )}
       </div>
       <AgreeTerms isChecked={isChecked} setIsChecked={setIsChecked} />
 
-      <Button state={isChecked} score={score}>
-        {' '}
+      <SignupButton state={isChecked} score={score}>
         Sign Up
-      </Button>
+      </SignupButton>
 
       <span className="mt-1 text-center text-sm text-black100 text-opacity-40">
         Already have an Account?{' '}

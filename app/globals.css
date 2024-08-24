@@ -4,7 +4,7 @@
 
 @layer components {
   .input {
-    @apply border-black100 text-black100 rounded-md border border-opacity-10 px-4 py-1 text-opacity-40 outline-none;
+    @apply rounded-md border border-black100 border-opacity-10 px-4 py-[6px] text-lg text-black100 text-opacity-40 outline-none;
   }
 }
 
