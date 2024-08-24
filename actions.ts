@@ -2,6 +2,7 @@
 
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+import { isValidEmail } from './lib/utils';
 
 export async function createUserAction(
   prevState: {
@@ -36,7 +37,7 @@ export async function createUserAction(
   }
 
   if (response.status === 500) {
-    throw new Error('An error occured creating user');
+    return { message: 'An error occured creating user' };
   }
 
   const session = {
@@ -70,7 +71,7 @@ export async function resendOTTP(formData: FormData) {
       console.log(res);
     }
   } catch (error) {
-    throw new Error('An error occured sending OTTP');
+    return { message: 'An error occured sending OTTP' };
   }
 }
 
@@ -90,7 +91,7 @@ export async function sendOTTp(
   const value = formData.get('value');
 
   const response = await fetch(
-    `https://ticket-backend-production.up.railway.app/api/v1/users/verify/${value}`,
+    `${process.env.baseUrl}/api/v1/users/verify/${value}`,
     {
       method: 'POST',
       body: JSON.stringify(value),
@@ -102,8 +103,6 @@ export async function sendOTTp(
   );
 
   const res = await response.json();
-
-  console.log(res);
 
   if (response.status === 400) {
     return { message: res.user_msg };
@@ -117,7 +116,45 @@ export async function sendOTTp(
     return { message: 'An error occured try again' };
   }
 
-  console.log(res);
+  return { message: '' };
+}
+
+export async function forgotPasswordAction(
+  prevState: { message: string },
+  formData: FormData,
+) {
+  const email = formData.get('email') as string;
+  console.log(email);
+  if (!isValidEmail(email)) {
+    return { message: 'please enter a valid email' };
+  }
+  let response;
+  try {
+    response = await fetch(
+      `${process.env.baseUrl}/api/v1/users/request-password-reset`,
+      {
+        method: 'POST',
+        body: JSON.stringify({ email }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    );
+  } catch (error) {
+    return { message: 'An error occured' };
+  }
+  const res = await response?.json();
+  if (!response?.ok) {
+    return { message: 'An error occured' };
+  }
+
+  if (response.status === 200) {
+    return { message: res.info, status: true };
+  }
+
+  if (response?.status === 400) {
+    return { message: res.user_msg };
+  }
 
   return { message: '' };
 }

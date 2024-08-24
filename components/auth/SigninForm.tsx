@@ -57,7 +57,7 @@ export default function SigninForm() {
         )}
       </div>
       <Link
-        href="/forgot_password"
+        href="/reset-password"
         className="self-end text-sm text-red-secondary"
       >
         Forgot Password?

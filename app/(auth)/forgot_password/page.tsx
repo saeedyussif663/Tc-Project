@@ -1,26 +1,23 @@
 'use client';
 
+import { forgotPasswordAction } from '@/actions';
 import AuthHeader from '@/components/auth/AuthHeader';
 import Button from '@/components/auth/Button';
-import { useRouter } from 'next/navigation';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import BackButton from '@/components/ui/backButton';
+import { useFormState } from 'react-dom';
 
-interface Inputs {
-  email: string;
+interface InitialState {
+  message: string;
+  status?: boolean;
 }
 
+const initialState: InitialState = {
+  message: '',
+  status: false,
+};
+
 export default function page() {
-  const router = useRouter();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<Inputs>();
-
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
-  };
-
+  const [state, formAction] = useFormState(forgotPasswordAction, initialState);
   return (
     <section className="flex h-auto w-full items-center justify-start font-open-sans md:my-auto md:h-[94%] md:w-1/2">
       <article className="flex h-full w-full flex-col items-center justify-start gap-5 pt-32 md:w-[70%] md:justify-center md:pt-0">
@@ -28,24 +25,24 @@ export default function page() {
           title="Forgot Password ?"
           desc="Enter your email to reset your password."
         />
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="flex w-full flex-col gap-4 px-4"
-        >
+        <form action={formAction} className="flex w-full flex-col gap-4 px-4">
           <input
             type="email"
             placeholder="Please enter your email address"
-            className="input mb-2 py-2"
-            {...register('email')}
+            className="input py-2"
+            name="email"
+            required
           />
+          {state.message && (
+            <p
+              className={`${state.status ? 'text-green-500' : 'text-red-500'}`}
+            >
+              {state.message}
+            </p>
+          )}
           <Button>Submit</Button>
         </form>
-        <button
-          className="text-sm text-red-secondary"
-          onClick={() => router.back()}
-        >
-          Back
-        </button>
+        <BackButton />
       </article>
     </section>
   );

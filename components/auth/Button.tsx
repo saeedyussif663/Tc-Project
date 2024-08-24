@@ -1,3 +1,4 @@
+import { useRouter } from 'next/navigation';
 import { ReactNode } from 'react';
 import { useFormStatus } from 'react-dom';
 
@@ -28,7 +29,7 @@ export default function Button({
     <button
       disabled={status.pending}
       type="submit"
-      className="mt-1 w-full rounded-lg bg-black100 py-2 text-white"
+      className="w-full rounded-lg bg-black100 py-2 text-white"
     >
       {status.pending ? 'submitting' : `${children}`}
     </button>
