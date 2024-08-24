@@ -8,7 +8,7 @@ import AgreeTerms from './AgreeTerms';
 import { passwordScorer } from 'password-scorer';
 import PasswordScore from './PasswordScore';
 import { useRouter } from 'next/navigation';
-import { createUserAction } from '@/actions';
+import { createUserAction } from '@/actions/actions';
 import Button from './Button';
 import { useFormState } from 'react-dom';
 import { SignupButton } from './Button';

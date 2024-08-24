@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Space_Grotesk, Plus_Jakarta_Sans, Open_Sans } from 'next/font/google';
 import '../globals.css';
 import AuthLayout from '@/components/auth/AuthLayout';
-import { Toaster } from '@/components/ui/toaster';
 
 const space_grotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -39,7 +38,6 @@ export default function RootLayout({
           <AuthLayout />
           {children}
         </main>
-        <Toaster />
       </body>
     </html>
   );

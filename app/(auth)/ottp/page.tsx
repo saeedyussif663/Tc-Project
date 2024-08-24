@@ -9,9 +9,9 @@ import {
 } from '@/components/ui/input-otp';
 import { useEffect, useState } from 'react';
 import Button, { OttpButton } from '@/components/auth/Button';
-import { getSession, sendOTTp } from '@/actions';
+import { getSession, sendOTTp } from '@/actions/actions';
 import { useRouter } from 'next/navigation';
-import { resendOTTP } from '@/actions';
+import { resendOTTP } from '@/actions/actions';
 import { useFormState } from 'react-dom';
 
 const initialState = {
@@ -42,8 +42,8 @@ export default function Page() {
   }, []);
 
   return (
-    <section className="flex h-auto w-full items-center justify-start font-open-sans md:my-auto md:h-[94%] md:w-1/2">
-      <article className="flex h-full w-full flex-col items-center justify-start gap-5 pt-20 md:w-[70%] md:justify-center md:pt-0">
+    <section className="flex h-screen w-full items-center justify-start font-open-sans md:my-auto md:h-[94%] md:w-1/2">
+      <article className="flex h-full w-full flex-col items-center justify-center gap-5 md:w-[70%] md:justify-center">
         <Image
           src="/images/DeviceMobile.png"
           alt="mobile-device"

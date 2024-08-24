@@ -2,7 +2,7 @@
 
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { isValidEmail } from './lib/utils';
+import { isValidEmail } from '../lib/utils';
 
 export async function createUserAction(
   prevState: {
@@ -171,7 +171,27 @@ export async function resetPasswordAction(
     return { message: 'Passwords do not match' };
   }
 
-  console.log(password, cPassword, token);
+  //TODO: send the POST request
+  let response;
+  try {
+    response = await fetch(
+      `${process.env.baseUrl}/api/v1/users/reset-password/${token}/`,
+      {
+        method: 'POST',
+        body: JSON.stringify({ password }),
+        headers: {
+          Authentication: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      },
+    );
+  } catch (error) {
+    return { message: 'An error occured' };
+  }
+
+  const res = await response.json();
+  console.log(res, response.status);
+
   return { message: 'testing' };
 }
 
