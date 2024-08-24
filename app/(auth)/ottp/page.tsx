@@ -9,9 +9,9 @@ import {
 } from '@/components/ui/input-otp';
 import { useEffect, useState } from 'react';
 import Button, { OttpButton } from '@/components/auth/Button';
-import { getSession, sendOTTp } from '@/actions/actions';
+import { getSession, sendOTTp } from '@/actions/authActions';
 import { useRouter } from 'next/navigation';
-import { resendOTTP } from '@/actions/actions';
+import { resendOTTP } from '@/actions/authActions';
 import { useFormState } from 'react-dom';
 
 const initialState = {

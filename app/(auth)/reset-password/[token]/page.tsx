@@ -1,6 +1,6 @@
 'use client';
 
-import { resetPasswordAction } from '@/actions/actions';
+import { resetPasswordAction } from '@/actions/authActions';
 import AgreeTerms from '@/components/auth/AgreeTerms';
 import AuthHeader from '@/components/auth/AuthHeader';
 import Button from '@/components/auth/Button';

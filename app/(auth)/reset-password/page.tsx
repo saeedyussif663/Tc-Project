@@ -1,6 +1,6 @@
 'use client';
 
-import { forgotPasswordAction } from '@/actions/actions';
+import { forgotPasswordAction } from '@/actions/authActions';
 import AuthHeader from '@/components/auth/AuthHeader';
 import Button from '@/components/auth/Button';
 import BackButton from '@/components/ui/backButton';
