@@ -1,37 +1,35 @@
 'use client';
 
+import { resetPasswordAction } from '@/actions';
 import AgreeTerms from '@/components/auth/AgreeTerms';
 import AuthHeader from '@/components/auth/AuthHeader';
 import Button from '@/components/auth/Button';
 import PasswordScore from '@/components/auth/PasswordScore';
 import { passwordScorer } from 'password-scorer';
 import { useEffect, useState } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { useFormState } from 'react-dom';
 import { FaRegEyeSlash } from 'react-icons/fa';
 import { IoEyeOutline } from 'react-icons/io5';
 
-interface Inputs {
-  password: string;
-  cPassword: string;
+interface InitialState {
+  message: string;
+  status?: false;
 }
 
-export default function page() {
-  const [isPasswordShowing, setIsPasswordShowing] = useState(false);
+const initialState: InitialState = {
+  message: '',
+  status: false,
+};
+
+export default function page({ params }: { params: { token: string } }) {
+  const [isPasswordShowing, setIsPasswordShowing] = useState<boolean>(false);
   const [confirmPasswordIsShowing, setConfirmPasswordIsShowing] =
     useState(false);
   const [isChecked, setIsChecked] = useState<boolean>(false);
-  const [score, setScore] = useState(0);
-  const [password, setPassword] = useState('');
+  const [score, setScore] = useState<number>(0);
+  const [password, setPassword] = useState<string>('');
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<Inputs>();
-
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
-  };
+  const [state, formAction] = useFormState(resetPasswordAction, initialState);
 
   useEffect(() => {
     const result = passwordScorer(password, 'en');
@@ -45,21 +43,40 @@ export default function page() {
           title="Setup New Password"
           desc="Have you already reset the password ?"
         />
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="flex w-full flex-col gap-5"
-        >
+        <form action={formAction} className="flex w-full flex-col gap-5">
+          <div className="relative w-full">
+            <input
+              type={isPasswordShowing ? 'text' : 'password'}
+              placeholder="Password"
+              className="input w-full"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <input type="hidden" name="token" value={params.token} />
+            {isPasswordShowing ? (
+              <FaRegEyeSlash
+                size={19}
+                className="absolute bottom-2 right-4 cursor-pointer text-black100 text-opacity-40"
+                onClick={() => setConfirmPasswordIsShowing((prev) => !prev)}
+              />
+            ) : (
+              <IoEyeOutline
+                size={19}
+                className="absolute bottom-2 right-4 cursor-pointer text-black100 text-opacity-40"
+                onClick={() => setConfirmPasswordIsShowing((prev) => !prev)}
+              />
+            )}
+          </div>
           <div className="w-full">
             <div className="relative">
               <input
-                type={isPasswordShowing ? 'text' : 'password'}
-                placeholder="Password"
+                type={confirmPasswordIsShowing ? 'text' : 'password'}
+                placeholder="Repeat password"
                 className="input w-full"
-                {...register('password')}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                name="cPassword"
               />
-              {isPasswordShowing ? (
+              {confirmPasswordIsShowing ? (
                 <FaRegEyeSlash
                   size={19}
                   className="absolute bottom-2 right-4 cursor-pointer text-black100 text-opacity-40"
@@ -82,27 +99,9 @@ export default function page() {
               </p>
             </div>
           </div>
-          <div className="relative w-full">
-            <input
-              type={confirmPasswordIsShowing ? 'text' : 'password'}
-              placeholder="Repeat Password"
-              className="input w-full"
-              {...register('cPassword')}
-            />
-            {confirmPasswordIsShowing ? (
-              <FaRegEyeSlash
-                size={19}
-                className="absolute bottom-2 right-4 cursor-pointer text-black100 text-opacity-40"
-                onClick={() => setConfirmPasswordIsShowing((prev) => !prev)}
-              />
-            ) : (
-              <IoEyeOutline
-                size={19}
-                className="absolute bottom-2 right-4 cursor-pointer text-black100 text-opacity-40"
-                onClick={() => setConfirmPasswordIsShowing((prev) => !prev)}
-              />
-            )}
-          </div>
+          {state.message && (
+            <p className="text-sm text-red-secondary">{state.message}</p>
+          )}
           <AgreeTerms isChecked={isChecked} setIsChecked={setIsChecked} />
           <Button state={isChecked} score={score}>
             Submit

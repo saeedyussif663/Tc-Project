@@ -159,6 +159,22 @@ export async function forgotPasswordAction(
   return { message: '' };
 }
 
+export async function resetPasswordAction(
+  prevState: { message: string },
+  formData: FormData,
+) {
+  const password = formData.get('password') as string;
+  const cPassword = formData.get('cPassword') as string;
+  const token = formData.get('token') as string;
+
+  if (!(password === cPassword)) {
+    return { message: 'Passwords do not match' };
+  }
+
+  console.log(password, cPassword, token);
+  return { message: 'testing' };
+}
+
 export async function getSession() {
   const session = cookies().get('session')?.value;
   if (!session) return null;

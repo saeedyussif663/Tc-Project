@@ -31,6 +31,7 @@ export default function page() {
             placeholder="Please enter your email address"
             className="input py-2"
             name="email"
+            autoComplete="off"
             required
           />
           {state.message && (
