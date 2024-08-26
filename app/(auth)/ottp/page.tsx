@@ -81,10 +81,10 @@ export default function Page() {
           action={formAction}
           className="flex w-full flex-col items-center justify-center gap-4"
         >
-          <input className="hidden" name="value" value={value} />
+          <input className="hidden" name="value" defaultValue={value} />
           <InputOTP
             maxLength={6}
-            value={value}
+            defaultValue={value}
             onChange={(value: string) => setValue(value)}
           >
             <InputOTPGroup className="gap-4">
