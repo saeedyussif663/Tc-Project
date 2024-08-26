@@ -6,6 +6,8 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { FaRegEyeSlash } from 'react-icons/fa';
 import { IoEyeOutline } from 'react-icons/io5';
 import Button from './Button';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 interface Inputs {
   email: string;
@@ -19,10 +21,21 @@ export default function SigninForm() {
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
+  const router = useRouter();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
-  };
+  async function onSubmit(data: Inputs) {
+    const res = await signIn('credentials', {
+      redirect: false,
+      email: data.email,
+      password: data.password,
+    });
+
+    if (!res?.error) {
+      router.push('/store');
+      return;
+    }
+    console.log(res?.error);
+  }
 
   return (
     <form
@@ -34,6 +47,7 @@ export default function SigninForm() {
         placeholder="Email"
         className="input"
         {...register('email')}
+        autoComplete="off"
       />
       <div className="relative w-full">
         <input
@@ -41,6 +55,7 @@ export default function SigninForm() {
           placeholder="Password"
           className="input w-full"
           {...register('password')}
+          autoComplete="off"
         />
         {isPasswordShowing ? (
           <FaRegEyeSlash

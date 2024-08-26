@@ -26,6 +26,15 @@ export interface UsefulLink {
   sublinks: string[];
 }
 
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  phone_number: string;
+  account: string;
+  access_token: string;
+}
+
 export const benefits: Benefits[] = [
   {
     heading: 'Browse upcoming and view event details',
