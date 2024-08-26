@@ -27,11 +27,11 @@ export default function MobileNav() {
             </ul>
           </nav>
           <div className="mt-4 flex flex-col gap-5 font-sans-jarkata">
-            <Link href="/login" className="text-lg font-medium">
+            <Link href="/signin" className="text-lg font-medium">
               Login
             </Link>
             <Link
-              href="/sign-up"
+              href="/signup"
               className="rounded-lg bg-red-secondary px-6 py-3 font-semibold text-white"
             >
               Sing up

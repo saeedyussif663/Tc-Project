@@ -8,11 +8,11 @@ import {
   InputOTPSlot,
 } from '@/components/ui/input-otp';
 import { useEffect, useState } from 'react';
-import Button, { OttpButton } from '@/components/auth/Button';
+import { OttpButton } from '@/components/auth/Button';
 import { getSession, sendOTTp } from '@/actions/authActions';
 import { useRouter } from 'next/navigation';
 import { resendOTTP } from '@/actions/authActions';
-import { useFormState } from 'react-dom';
+import { useFormState, useFormStatus } from 'react-dom';
 
 const initialState = {
   message: '',
@@ -20,11 +20,17 @@ const initialState = {
 
 export default function Page() {
   const router = useRouter();
-  const [value, setValue] = useState('');
-  const [number, setNumber] = useState('');
-  const [token, setToken] = useState('');
+  const [value, setValue] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [token, setToken] = useState<string>('');
+  const [showResendMessage, setShowResendMessage] = useState<any>(null);
+  const [showStateMessage, setShowStateMessage] = useState<any>(null);
 
   const [state, formAction] = useFormState(sendOTTp, initialState);
+  const [resendState, resendFormAction] = useFormState(
+    resendOTTP,
+    initialState,
+  );
 
   async function checkSession() {
     const session = await getSession();
@@ -34,12 +40,22 @@ export default function Page() {
       return;
     }
     setToken(session.token);
-    setNumber(session.phone_number);
+    setEmail(session.email);
   }
 
   useEffect(() => {
     checkSession();
   }, []);
+
+  useEffect(() => {
+    setShowResendMessage(false);
+    setShowStateMessage(true);
+  }, [state]);
+
+  useEffect(() => {
+    setShowStateMessage(false);
+    setShowResendMessage(true);
+  }, [resendState]);
 
   return (
     <section className="flex h-screen w-full items-center justify-start font-open-sans md:my-auto md:h-[94%] md:w-1/2">
@@ -55,10 +71,10 @@ export default function Page() {
           desc="Enter the verification code we sent to"
         />
 
-        <h4 className="text-lg font-semibold text-black100">{number}</h4>
+        <h4 className="font-semibold text-black100">{email}</h4>
 
         <p className="text-sm font-semibold text-black100">
-          Type your 4 digit security code
+          Type your 6 digit security code
         </p>
 
         <form
@@ -69,7 +85,7 @@ export default function Page() {
           <InputOTP
             maxLength={6}
             value={value}
-            onChange={(value) => setValue(value)}
+            onChange={(value: string) => setValue(value)}
           >
             <InputOTPGroup className="gap-4">
               <InputOTPSlot index={0} />
@@ -81,21 +97,31 @@ export default function Page() {
             </InputOTPGroup>
           </InputOTP>
           <OttpButton />
-          {state.message && (
-            <p className="self-start text-sm text-red-secondary">
-              {state.message}
-            </p>
-          )}
+          <div className="self-start">
+            {state.message && showStateMessage && (
+              <p className="text-red-500">{state.message}</p>
+            )}
+            {resendState.message && showResendMessage && (
+              <p className="text-green-500">{resendState.message}</p>
+            )}
+          </div>
         </form>
         <div className="flex gap-2 text-black100 text-opacity-40">
           Didn&apos;t get the code ?{' '}
-          <form action={resendOTTP}>
-            <button type="submit" className="text-red-secondary">
-              Resend
-            </button>
+          <form action={resendFormAction}>
+            <ResendButton />
           </form>
         </div>
       </article>
     </section>
+  );
+}
+
+function ResendButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button disabled={pending} type="submit" className="text-red-secondary">
+      {pending ? 'Resending' : 'Resend'}
+    </button>
   );
 }

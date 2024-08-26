@@ -20,13 +20,20 @@ export async function createUserAction(
   if (data.name.length < 3) {
     return { message: 'name should be more than 3 characters' };
   }
-  const response = await fetch(`${process.env.baseUrl}/api/v1/users/`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
+
+  let response;
+  try {
+    response = await fetch(`${process.env.baseUrl}/api/v1/users/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+  } catch (error) {
+    return { message: 'An error occured creating user. Try again!' };
+  }
+
   const res = await response.json();
   if (response.status === 400) {
     return { message: res.user_msg };
@@ -41,7 +48,7 @@ export async function createUserAction(
   }
 
   const session = {
-    phone_number: res?.data?.user.phone_number,
+    email: res?.data?.user.email,
     token: res?.data?.access_token,
   };
   const expires = new Date(res?.data?.expires);
@@ -52,13 +59,16 @@ export async function createUserAction(
   redirect('/ottp');
 }
 
-export async function resendOTTP(formData: FormData) {
+export async function resendOTTP(
+  prevState: { message: string },
+  formData: FormData,
+) {
   try {
     const data = cookies().get('session')?.value;
     if (data) {
       const session = JSON.parse(data);
       const response = await fetch(
-        `${process.env.baseUrl}/api/v1/users/resend-otp/`,
+        `${process.env.baseUrl}/api/v1/users/resend-otp`,
         {
           method: 'POST',
           headers: {
@@ -69,11 +79,40 @@ export async function resendOTTP(formData: FormData) {
 
       const res = await response.json();
       console.log(res);
+      return { message: res.info };
     }
   } catch (error) {
-    return { message: 'An error occured sending OTTP' };
+    return { message: 'An error occured resending ottp. Try again' };
   }
+  return { message: '' };
 }
+
+// export async function resendOTTP(
+//   prevState: { message: string },
+//   formData: FormData,
+// ) {
+//   try {
+//     const data = cookies().get('session')?.value;
+//     if (data) {
+//       const session = JSON.parse(data);
+//       const response = await fetch(
+//         `${process.env.baseUrl}/api/v1/users/resend-otp`,
+//         {
+//           method: 'POST',
+//           headers: {
+//             Authorization: `Bearer ${session.token}`,
+//           },
+//         },
+//       );
+
+//       const res = await response.json();
+//       console.log(res.info);
+//       // return { message: 'hello' };
+//     }
+//   } catch (error) {
+//     return { message: 'An error occured sending OTTP' };
+//   }
+// }
 
 export async function sendOTTp(
   prevState: {
@@ -90,17 +129,24 @@ export async function sendOTTp(
   const session = JSON.parse(data);
   const value = formData.get('value');
 
-  const response = await fetch(
-    `${process.env.baseUrl}/api/v1/users/verify/${value}`,
-    {
-      method: 'POST',
-      body: JSON.stringify(value),
-      headers: {
-        Authorization: `Bearer ${session.token}`,
-        'Content-Type': 'application/json',
+  let response;
+  try {
+    response = await fetch(
+      `${process.env.baseUrl}/api/v1/users/verify/${value}`,
+      {
+        method: 'POST',
+        body: JSON.stringify(value),
+        headers: {
+          Authorization: `Bearer ${session.token}`,
+          'Content-Type': 'application/json',
+        },
       },
-    },
-  );
+    );
+  } catch (error) {
+    return {
+      message: 'An error occured sending ottp verification code. Try again!',
+    };
+  }
 
   const res = await response.json();
 
@@ -112,10 +158,6 @@ export async function sendOTTp(
     redirect('/signin');
   }
 
-  if (!res.ok) {
-    return { message: 'An error occured try again' };
-  }
-
   return { message: '' };
 }
 
@@ -124,7 +166,6 @@ export async function forgotPasswordAction(
   formData: FormData,
 ) {
   const email = formData.get('email') as string;
-  console.log(email);
   if (!isValidEmail(email)) {
     return { message: 'please enter a valid email' };
   }
@@ -149,7 +190,7 @@ export async function forgotPasswordAction(
   }
 
   if (response.status === 200) {
-    return { message: res.info, status: true };
+    return { message: '', status: true };
   }
 
   if (response?.status === 400) {
