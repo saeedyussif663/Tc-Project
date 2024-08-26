@@ -158,12 +158,9 @@ export async function forgotPasswordAction(
     return { message: 'An error occured' };
   }
   const res = await response?.json();
-  if (!response?.ok) {
-    return { message: 'An error occured' };
-  }
 
   if (response.status === 200) {
-    return { message: '', status: true };
+    return { message: res.info, status: true };
   }
 
   if (response?.status === 400) {
@@ -185,11 +182,10 @@ export async function resetPasswordAction(
     return { message: 'Passwords do not match' };
   }
 
-  //TODO: send the POST request
   let response;
   try {
     response = await fetch(
-      `${process.env.baseUrl}/api/v1/users/reset-password/${token}/`,
+      `${process.env.baseUrl}/api/v1/users/reset-password/${token}`,
       {
         method: 'POST',
         body: JSON.stringify({ password }),
@@ -204,9 +200,12 @@ export async function resetPasswordAction(
   }
 
   const res = await response.json();
-  console.log(res, response.status);
 
-  return { message: 'testing' };
+  if (!response.ok) {
+    return { message: `${res.user_msg}, request new one` };
+  }
+
+  redirect('/signin');
 }
 
 export async function getSession() {

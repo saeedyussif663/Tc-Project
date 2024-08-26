@@ -58,13 +58,13 @@ export default function page({ params }: { params: { token: string } }) {
               <FaRegEyeSlash
                 size={19}
                 className="absolute bottom-2 right-4 cursor-pointer text-black100 text-opacity-40"
-                onClick={() => setConfirmPasswordIsShowing((prev) => !prev)}
+                onClick={() => setIsPasswordShowing((prev) => !prev)}
               />
             ) : (
               <IoEyeOutline
                 size={19}
                 className="absolute bottom-2 right-4 cursor-pointer text-black100 text-opacity-40"
-                onClick={() => setConfirmPasswordIsShowing((prev) => !prev)}
+                onClick={() => setIsPasswordShowing((prev) => !prev)}
               />
             )}
           </div>
@@ -80,13 +80,13 @@ export default function page({ params }: { params: { token: string } }) {
                 <FaRegEyeSlash
                   size={19}
                   className="absolute bottom-2 right-4 cursor-pointer text-black100 text-opacity-40"
-                  onClick={() => setIsPasswordShowing((prev) => !prev)}
+                  onClick={() => setConfirmPasswordIsShowing((prev) => !prev)}
                 />
               ) : (
                 <IoEyeOutline
                   size={19}
                   className="absolute bottom-2 right-4 cursor-pointer text-black100 text-opacity-40"
-                  onClick={() => setIsPasswordShowing((prev) => !prev)}
+                  onClick={() => setConfirmPasswordIsShowing((prev) => !prev)}
                 />
               )}
             </div>
