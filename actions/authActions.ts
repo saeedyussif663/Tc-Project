@@ -78,7 +78,6 @@ export async function resendOTTP(
       );
 
       const res = await response.json();
-      console.log(res);
       return { message: res.info };
     }
   } catch (error) {
@@ -86,33 +85,6 @@ export async function resendOTTP(
   }
   return { message: '' };
 }
-
-// export async function resendOTTP(
-//   prevState: { message: string },
-//   formData: FormData,
-// ) {
-//   try {
-//     const data = cookies().get('session')?.value;
-//     if (data) {
-//       const session = JSON.parse(data);
-//       const response = await fetch(
-//         `${process.env.baseUrl}/api/v1/users/resend-otp`,
-//         {
-//           method: 'POST',
-//           headers: {
-//             Authorization: `Bearer ${session.token}`,
-//           },
-//         },
-//       );
-
-//       const res = await response.json();
-//       console.log(res.info);
-//       // return { message: 'hello' };
-//     }
-//   } catch (error) {
-//     return { message: 'An error occured sending OTTP' };
-//   }
-// }
 
 export async function sendOTTp(
   prevState: {
@@ -155,6 +127,7 @@ export async function sendOTTp(
   }
 
   if (response.status === 200) {
+    cookies().delete('session');
     redirect('/signin');
   }
 

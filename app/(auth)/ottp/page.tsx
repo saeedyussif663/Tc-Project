@@ -84,7 +84,7 @@ export default function Page() {
           <input className="hidden" name="value" defaultValue={value} />
           <InputOTP
             maxLength={6}
-            defaultValue={value}
+            value={value}
             onChange={(value: string) => setValue(value)}
           >
             <InputOTPGroup className="gap-4">
