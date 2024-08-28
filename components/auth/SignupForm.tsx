@@ -11,6 +11,7 @@ import { createUserAction } from '@/actions/authActions';
 import { useFormState } from 'react-dom';
 import { SignupButton } from './Button';
 import PhoneInput from 'react-phone-number-input';
+import { useToast } from '@/components/ui/use-toast';
 import 'react-phone-number-input/style.css';
 
 const initialState = {
@@ -25,13 +26,25 @@ export default function SignupForm() {
   const [password, setPassword] = useState('');
   const [score, setScore] = useState(0);
   const [value, setValue] = useState<PhoneNumber>('');
-
   const [state, formAction] = useFormState(createUserAction, initialState);
+
+  const { toast } = useToast();
 
   useEffect(() => {
     const result = passwordScorer(password, 'en');
     setScore(result.score);
   }, [password]);
+
+  useEffect(() => {
+    if (state.message) {
+      toast({
+        description: state.message,
+        variant: 'destructive',
+      });
+    }
+
+    state.message = '';
+  }, [state.message]);
 
   return (
     <form action={formAction} className="mt-1 flex w-full flex-col gap-3 px-2">

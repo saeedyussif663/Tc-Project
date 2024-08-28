@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Space_Grotesk, Plus_Jakarta_Sans, Open_Sans } from 'next/font/google';
 import '../globals.css';
 import AuthLayout from '@/components/auth/AuthLayout';
+import { Toaster } from '@/components/ui/toaster';
 
 const space_grotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -37,6 +38,7 @@ export default function RootLayout({
         <main className="flex h-screen w-full justify-between gap-12 px-2 md:px-6 2xl:px-0">
           <AuthLayout />
           {children}
+          <Toaster />
         </main>
       </body>
     </html>

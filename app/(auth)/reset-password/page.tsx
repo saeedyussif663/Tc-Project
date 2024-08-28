@@ -4,6 +4,8 @@ import { forgotPasswordAction } from '@/actions/authActions';
 import AuthHeader from '@/components/auth/AuthHeader';
 import Button from '@/components/auth/Button';
 import BackButton from '@/components/ui/backButton';
+import { useToast } from '@/components/ui/use-toast';
+import { useEffect } from 'react';
 import { useFormState } from 'react-dom';
 
 interface InitialState {
@@ -18,6 +20,18 @@ const initialState: InitialState = {
 
 export default function page() {
   const [state, formAction] = useFormState(forgotPasswordAction, initialState);
+  const { toast } = useToast();
+
+  useEffect(() => {
+    if (state.message) {
+      toast({
+        description: state.message,
+        variant: state.status ? 'success' : 'destructive',
+      });
+    }
+    state.message = '';
+  }, [state.message]);
+
   return (
     <section className="flex h-screen w-full items-center justify-start font-open-sans md:my-auto md:h-[94%] md:w-1/2">
       <article className="flex h-full w-full flex-col items-center justify-center gap-5 md:w-[70%] md:justify-center">

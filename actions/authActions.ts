@@ -78,12 +78,16 @@ export async function resendOTTP(
       );
 
       const res = await response.json();
-      return { message: res.info };
+      return { message: res.info, status: 'success' };
     }
   } catch (error) {
-    return { message: 'An error occured resending ottp. Try again' };
+    return {
+      message: 'An error occured resending ottp. Try again',
+    };
   }
-  return { message: '' };
+  return {
+    message: 'An error occured resending ottp. Try again',
+  };
 }
 
 export async function sendOTTp(
@@ -95,7 +99,7 @@ export async function sendOTTp(
   const data = cookies().get('session')?.value;
 
   if (!data) {
-    return { message: '' };
+    return { message: '', status: '' };
   }
 
   const session = JSON.parse(data);
@@ -116,14 +120,15 @@ export async function sendOTTp(
     );
   } catch (error) {
     return {
-      message: 'An error occured sending ottp verification code. Try again!',
+      message: 'An error occured submitting ottp verification code. Try again!',
+      status: 'failed',
     };
   }
 
   const res = await response.json();
 
   if (response.status === 400) {
-    return { message: res.user_msg };
+    return { message: res.user_msg, status: 'failed' };
   }
 
   if (response.status === 200) {

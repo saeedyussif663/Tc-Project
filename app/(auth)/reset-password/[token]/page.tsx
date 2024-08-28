@@ -5,6 +5,7 @@ import AgreeTerms from '@/components/auth/AgreeTerms';
 import AuthHeader from '@/components/auth/AuthHeader';
 import Button from '@/components/auth/Button';
 import PasswordScore from '@/components/auth/PasswordScore';
+import { useToast } from '@/components/ui/use-toast';
 import { passwordScorer } from 'password-scorer';
 import { useEffect, useState } from 'react';
 import { useFormState } from 'react-dom';
@@ -30,11 +31,22 @@ export default function page({ params }: { params: { token: string } }) {
   const [password, setPassword] = useState<string>('');
 
   const [state, formAction] = useFormState(resetPasswordAction, initialState);
+  const { toast } = useToast();
 
   useEffect(() => {
     const result = passwordScorer(password, 'en');
     setScore(result.score);
   }, [password]);
+
+  useEffect(() => {
+    if (state.message) {
+      toast({
+        description: state.message,
+        variant: 'destructive',
+      });
+    }
+    state.message = '';
+  }, [state.message]);
 
   return (
     <section className="flex h-screen w-full items-center justify-start font-open-sans md:my-auto md:h-[94%] md:w-1/2">

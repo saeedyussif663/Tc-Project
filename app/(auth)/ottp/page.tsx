@@ -13,9 +13,16 @@ import { getSession, sendOTTp } from '@/actions/authActions';
 import { useRouter } from 'next/navigation';
 import { resendOTTP } from '@/actions/authActions';
 import { useFormState, useFormStatus } from 'react-dom';
+import { useToast } from '@/components/ui/use-toast';
 
-const initialState = {
+interface InitialState {
+  message: string;
+  status?: 'success' | 'failed' | '';
+}
+
+const initialState: InitialState = {
   message: '',
+  status: '',
 };
 
 export default function Page() {
@@ -23,14 +30,12 @@ export default function Page() {
   const [value, setValue] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [token, setToken] = useState<string>('');
-  const [showResendMessage, setShowResendMessage] = useState<any>(null);
-  const [showStateMessage, setShowStateMessage] = useState<any>(null);
-
   const [state, formAction] = useFormState(sendOTTp, initialState);
   const [resendState, resendFormAction] = useFormState(
     resendOTTP,
     initialState,
   );
+  const { toast } = useToast();
 
   async function checkSession() {
     const session = await getSession();
@@ -48,14 +53,26 @@ export default function Page() {
   }, []);
 
   useEffect(() => {
-    setShowResendMessage(false);
-    setShowStateMessage(true);
-  }, [state]);
+    if (state.message) {
+      toast({
+        description: state.message,
+        variant: 'destructive',
+      });
+    }
+
+    state.message = '';
+  }, [state.message]);
 
   useEffect(() => {
-    setShowStateMessage(false);
-    setShowResendMessage(true);
-  }, [resendState]);
+    if (resendState.message) {
+      toast({
+        description: resendState.message,
+        variant: resendState.status === 'success' ? 'success' : 'destructive',
+      });
+    }
+
+    resendState.message = '';
+  }, [resendState.message]);
 
   return (
     <section className="flex h-screen w-full items-center justify-start font-open-sans md:my-auto md:h-[94%] md:w-1/2">
@@ -97,14 +114,6 @@ export default function Page() {
             </InputOTPGroup>
           </InputOTP>
           <OttpButton />
-          <div className="self-start">
-            {state.message && showStateMessage && (
-              <p className="text-red-500">{state.message}</p>
-            )}
-            {resendState.message && showResendMessage && (
-              <p className="text-green-500">{resendState.message}</p>
-            )}
-          </div>
         </form>
         <div className="flex gap-2 text-black100 text-opacity-40">
           Didn&apos;t get the code ?{' '}
