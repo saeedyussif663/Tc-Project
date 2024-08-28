@@ -1,3 +1,5 @@
+import { User as NextAuthUser } from 'next-auth';
+
 export interface Benefits {
   heading: string;
   text: string;
@@ -26,13 +28,14 @@ export interface UsefulLink {
   sublinks: string[];
 }
 
-export interface User {
+export interface User extends NextAuthUser {
   id: string;
   name: string;
   email: string;
   phone_number: string;
   account: string;
   access_token: string;
+  expires: string;
 }
 
 export const benefits: Benefits[] = [

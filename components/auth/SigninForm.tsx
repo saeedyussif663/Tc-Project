@@ -8,6 +8,7 @@ import { IoEyeOutline } from 'react-icons/io5';
 import Button from './Button';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { useToast } from '../ui/use-toast';
 
 interface Inputs {
   email: string;
@@ -16,6 +17,9 @@ interface Inputs {
 
 export default function SigninForm() {
   const [isPasswordShowing, setIsPasswordShowing] = useState<boolean>(false);
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -24,6 +28,7 @@ export default function SigninForm() {
   const router = useRouter();
 
   async function onSubmit(data: Inputs) {
+    setIsSubmitting(true);
     const res = await signIn('credentials', {
       redirect: false,
       email: data.email,
@@ -34,7 +39,13 @@ export default function SigninForm() {
       router.push('/store');
       return;
     }
-    console.log(res?.error);
+    setIsSubmitting(false);
+
+    toast({
+      description: res.error,
+      variant: 'destructive',
+      duration: 3000,
+    });
   }
 
   return (
@@ -77,7 +88,13 @@ export default function SigninForm() {
       >
         Forgot Password?
       </Link>
-      <Button>Sign In</Button>
+      <button
+        type="submit"
+        className="w-full rounded-lg bg-black100 py-2 text-white"
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? 'Signing in' : 'Sign in'}
+      </button>
       <span className="text-center text-black100 text-opacity-40">
         Not a Member yet?{' '}
         <Link href="/signup" className="text-sm text-red-secondary">

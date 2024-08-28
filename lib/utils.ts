@@ -1,6 +1,6 @@
 import { User } from '@/CONSTANTS';
 import { type ClassValue, clsx } from 'clsx';
-import { NextAuthOptions } from 'next-auth';
+import { NextAuthOptions, Session } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { twMerge } from 'tailwind-merge';
 
@@ -22,44 +22,41 @@ export const authOptions: NextAuthOptions = {
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials): Promise<any> {
-        if (!credentials) {
+        const email = credentials?.email;
+        const password = credentials?.password;
+        if (!email || !password) {
           throw new Error('No credentials provided.');
         }
 
-        const { email, password } = credentials;
-
-        try {
-          const response = await fetch(
-            `${process.env.baseUrl}/api/v1/users/login`,
-            {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ email, password }),
+        const response = await fetch(
+          `${process.env.baseUrl}/api/v1/users/login`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
             },
-          );
+            body: JSON.stringify({ email, password }),
+          },
+        );
 
-          if (!response.ok) {
-            const err = await response.json();
-            throw new Error(err.user_msg);
-          }
-
-          const { data } = await response.json();
-
-          const user: User = {
-            id: data.user.id,
-            name: data.user.name,
-            email: data.user.email,
-            phone_number: data.user.phone_number,
-            account: data.user.account_type,
-            access_token: data.access_token,
-          };
-
-          return user;
-        } catch (err: any) {
-          throw new Error(err.message);
+        if (!response.ok) {
+          const err = await response.json();
+          throw new Error(err.user_msg);
         }
+
+        const res = await response.json();
+
+        const user: User = {
+          id: res.data.user.id,
+          name: res.data.user.name,
+          email: res.data.user.email,
+          phone_number: res.data.user.phone_number,
+          account: res.data.user.account_type,
+          access_token: res.data.access_token,
+          expires: res.data.expires,
+        };
+
+        return user;
       },
     }),
   ],
@@ -71,12 +68,23 @@ export const authOptions: NextAuthOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    async jwt({ token, user, account }) {
+    async jwt({ token, user }) {
+      const extendedUser = user as User;
+      if (user) {
+        return {
+          ...extendedUser,
+        };
+      }
+
       return token;
     },
 
     async session({ token, session }) {
-      console.log({ session });
+      if (token) {
+        session.user = token as Session['user'];
+        session.expires = token.expires as string;
+      }
+
       return session;
     },
   },
