@@ -13,7 +13,7 @@ export default async function Home() {
     <section>
       <h1>Welcome to the store, {session?.user?.name}</h1>
       <h2>{session?.user?.email}</h2>
-      <h4>{session.user.phone_number}</h4>
+      <h4>{session?.user?.phone_number}</h4>
       <LogoutButton />
     </section>
   );
