@@ -27,6 +27,7 @@ export default function page() {
       toast({
         description: state.message,
         variant: state.status ? 'success' : 'destructive',
+        duration: 3000,
       });
     }
     state.message = '';

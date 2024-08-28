@@ -57,6 +57,7 @@ export default function Page() {
       toast({
         description: state.message,
         variant: 'destructive',
+        duration: 3000,
       });
     }
 
@@ -68,6 +69,7 @@ export default function Page() {
       toast({
         description: resendState.message,
         variant: resendState.status === 'success' ? 'success' : 'destructive',
+        duration: 3000,
       });
     }
 

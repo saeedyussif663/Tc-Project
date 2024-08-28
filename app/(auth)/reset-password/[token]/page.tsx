@@ -43,6 +43,7 @@ export default function page({ params }: { params: { token: string } }) {
       toast({
         description: state.message,
         variant: 'destructive',
+        duration: 3000,
       });
     }
     state.message = '';

@@ -40,6 +40,7 @@ export default function SignupForm() {
       toast({
         description: state.message,
         variant: 'destructive',
+        duration: 3000,
       });
     }
 
