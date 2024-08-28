@@ -50,7 +50,7 @@ export default function Header() {
           href="/signup"
           className="rounded-lg bg-red-secondary px-6 py-3 font-semibold text-white"
         >
-          Sing up
+          Sign up
         </Link>
       </div>
       {/* mobile nav */}
