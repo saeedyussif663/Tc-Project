@@ -32,9 +32,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${space_grotesk.variable} ${jakarta_sans.variable} ${open_sans.variable} mx-auto max-w-7xl overflow-x-hidden`}
+        className={`${space_grotesk.variable} ${jakarta_sans.variable} ${open_sans.variable} mx-auto max-w-screen-2xl overflow-x-hidden`}
       >
-        <main className="flex h-screen w-full justify-between gap-12 px-2 md:px-6">
+        <main className="flex h-screen w-full justify-between gap-12 px-2 md:px-6 2xl:px-0">
           <AuthLayout />
           {children}
         </main>

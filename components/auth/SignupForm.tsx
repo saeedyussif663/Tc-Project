@@ -7,25 +7,26 @@ import { IoEyeOutline } from 'react-icons/io5';
 import AgreeTerms from './AgreeTerms';
 import { passwordScorer } from 'password-scorer';
 import PasswordScore from './PasswordScore';
-import { useRouter } from 'next/navigation';
 import { createUserAction } from '@/actions/authActions';
-import Button from './Button';
 import { useFormState } from 'react-dom';
 import { SignupButton } from './Button';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 
 const initialState = {
   message: '',
 };
+
+type PhoneNumber = string | undefined;
 
 export default function SignupForm() {
   const [isPasswordShowing, setIsPasswordShowing] = useState<boolean>(false);
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [password, setPassword] = useState('');
   const [score, setScore] = useState(0);
+  const [value, setValue] = useState<PhoneNumber>('');
 
   const [state, formAction] = useFormState(createUserAction, initialState);
-
-  const router = useRouter();
 
   useEffect(() => {
     const result = passwordScorer(password, 'en');
@@ -51,14 +52,19 @@ export default function SignupForm() {
           required
           autoComplete="off"
         />
+        <PhoneInput
+          placeholder="Enter phone number"
+          defaultCountry="GH"
+          value={value}
+          onChange={setValue}
+          className="input"
+        />
 
         <input
           type="text"
-          placeholder="Phone Number"
-          className="input"
+          className="hidden"
           name="phone_number"
-          required
-          autoComplete="off"
+          defaultValue={value}
         />
 
         <div className="relative w-full">
