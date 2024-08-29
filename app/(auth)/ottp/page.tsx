@@ -40,10 +40,6 @@ export default function Page() {
   async function checkSession() {
     const session = await getSession();
 
-    if (session === null) {
-      router.push('/signup');
-      return;
-    }
     setToken(session.token);
     setEmail(session.email);
   }

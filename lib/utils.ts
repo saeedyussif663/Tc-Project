@@ -46,6 +46,8 @@ export const authOptions: NextAuthOptions = {
 
         const res = await response.json();
 
+        console.log({ res });
+
         const user: User = {
           id: res.data.user.id,
           name: res.data.user.name,
@@ -53,7 +55,7 @@ export const authOptions: NextAuthOptions = {
           phone_number: res.data.user.phone_number,
           account: res.data.user.account_type,
           access_token: res.data.access_token,
-          expires: res.data.expires,
+          role: res.data.user.account_type,
         };
 
         return user;
@@ -65,24 +67,23 @@ export const authOptions: NextAuthOptions = {
   },
   session: {
     strategy: 'jwt',
+    maxAge: 5 * 60,
   },
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async jwt({ token, user }) {
-      const extendedUser = user as User;
       if (user) {
         return {
-          ...extendedUser,
+          ...user,
         };
       }
-
       return token;
     },
 
     async session({ token, session }) {
       if (token) {
         session.user = token as Session['user'];
-        session.expires = token.expires as string;
+        session.expires = Date.now();
       }
 
       return session;

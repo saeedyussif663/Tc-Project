@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Space_Grotesk, Plus_Jakarta_Sans, Open_Sans } from 'next/font/google';
-import '../globals.css';
+import './globals.css';
+import Provider from '@/components/ui/Provider';
 
 const space_grotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -30,11 +31,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body
-        className={`${space_grotesk.variable} ${jakarta_sans.variable} ${open_sans.variable} mx-auto max-w-7xl overflow-x-hidden`}
-      >
-        {children}
-      </body>
+      <Provider>
+        <body
+          className={`${space_grotesk.variable} ${jakarta_sans.variable} ${open_sans.variable} mx-auto max-w-7xl overflow-x-hidden`}
+        >
+          {children}
+        </body>
+      </Provider>
     </html>
   );
 }

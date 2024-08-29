@@ -35,7 +35,7 @@ export interface User extends NextAuthUser {
   phone_number: string;
   account: string;
   access_token: string;
-  expires: string;
+  role: string;
 }
 
 export const benefits: Benefits[] = [
