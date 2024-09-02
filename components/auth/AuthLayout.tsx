@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function AuthLayout() {
   return (
-    <section className="my-auto hidden h-[94%] w-1/2 flex-col justify-around rounded-lg bg-red-secondary pl-12 font-sans-jarkata text-white md:flex">
+    <section className="my-auto hidden h-[94%] w-1/2 flex-col justify-around rounded-lg bg-red-secondary pl-12 font-sans-jarkata text-white md:flex 2xl:w-4/6">
       <h1 className="font-space-grotesk text-2xl font-bold">Tc Ticket</h1>
       <div className="mt-8 font-sans-jarkata">
         <h2 className="text-[32px] font-medium">
