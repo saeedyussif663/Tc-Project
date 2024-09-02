@@ -26,7 +26,7 @@ export default async function RootLayout({
 
   return (
     <>
-      <main className="flex h-screen w-full justify-between gap-12 px-2 md:px-6 2xl:px-0">
+      <main className="flex h-screen w-full justify-between gap-12 px-2 md:px-6 2xl:justify-start 2xl:px-0">
         <AuthLayout />
         {children}
       </main>
