@@ -1,3 +1,4 @@
+import EventListings from '@/components/store/EventListings';
 import Header from '@/components/store/Header';
 import LogoutButton from '@/components/ui/logoutButton';
 import { authOptions } from '@/lib/utils';
@@ -8,6 +9,7 @@ export default async function Home() {
   return (
     <>
       <Header />
+      <EventListings />
     </>
   );
 }
