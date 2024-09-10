@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
 
 export default function StoreLayout({ children }: { children: ReactNode }) {
-  return <main>{children}</main>;
+  return <main className="mb-10">{children}</main>;
 }
