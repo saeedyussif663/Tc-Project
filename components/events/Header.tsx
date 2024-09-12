@@ -12,7 +12,7 @@ import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
 
 export default function Header() {
   return (
-    <header className="flex w-full items-center px-3 py-4 md:px-8">
+    <header className="flex w-full items-center px-3 py-6 md:px-8">
       <div className="flex gap-2 font-space-grotesk">
         <Image
           src="/images/other-logo.png"
@@ -28,15 +28,15 @@ export default function Header() {
           type="text"
           name="search"
           placeholder="Search events"
-          className="text-gray w-full rounded-2xl bg-[#F2F2F2] px-12 py-2 font-open-sans"
+          className="w-full rounded-2xl bg-[#F2F2F2] px-12 py-2 font-open-sans text-gray"
         />
-        <ListFilter className="text-gray cursor-pointer" size={30} />
+        <ListFilter className="cursor-pointer text-gray" size={30} />
         <SearchIcon
-          className="text-gray absolute bottom-[10px] left-3 cursor-pointer"
+          className="absolute bottom-[10px] left-3 cursor-pointer text-gray"
           size={20}
         />
       </div>
-      <div className="text-gray hidden gap-8 md:flex">
+      <div className="hidden gap-8 text-gray md:flex">
         <div className="relative">
           <Bell className="cursor-pointer" size={26} />
           <span className="absolute bottom-3 left-3 flex h-5 w-5 items-center justify-center rounded-full bg-[#ED3737] text-white">
@@ -58,15 +58,15 @@ export default function Header() {
               type="text"
               name="search"
               placeholder="Search events"
-              className="text-gray w-full rounded-2xl bg-[#F2F2F2] px-12 py-2 font-open-sans"
+              className="w-full rounded-2xl bg-[#F2F2F2] px-12 py-2 font-open-sans text-gray"
             />
 
             <SearchIcon
-              className="text-gray absolute bottom-[10px] left-3 cursor-pointer"
+              className="absolute bottom-[10px] left-3 cursor-pointer text-gray"
               size={20}
             />
           </div>
-          <div className="text-gray flex gap-8">
+          <div className="flex gap-8 text-gray">
             <ListFilter className="cursor-pointer" size={26} />
             <div className="relative">
               <Bell className="cursor-pointer" size={26} />

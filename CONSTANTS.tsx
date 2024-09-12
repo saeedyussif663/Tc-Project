@@ -95,3 +95,10 @@ export const contactUs = {
     { link: 'Accra-Ghana', icon: 'location.svg' },
   ],
 };
+
+export const paymentMethods: ['Credit Card', 'Mobile Money'] = [
+  'Credit Card',
+  'Mobile Money',
+];
+
+export type PaymentTypes = 'Credit Card' | 'Mobile Money';

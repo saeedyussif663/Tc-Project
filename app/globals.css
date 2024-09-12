@@ -6,9 +6,19 @@ input {
   outline: none;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 @layer components {
   .input {
     @apply rounded-md border border-black100 border-opacity-10 px-4 py-[6px] text-lg text-black100 text-opacity-40 outline-none;
+  }
+
+  .form_input {
+    @apply rounded-md border border-[#B8B8B8] px-2 py-[6px] text-[#B8B8B8];
   }
 }
 
