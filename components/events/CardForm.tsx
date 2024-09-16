@@ -1,3 +1,7 @@
+'use client';
+
+import Wechat from '../icons/wechat';
+
 export default function CardForm() {
   return (
     <form className="mt-4 flex flex-col gap-3">
@@ -20,10 +24,16 @@ export default function CardForm() {
         />
       </div>
 
-      <div className="flex flex-col gap-1">
+      <div className="relative flex flex-col gap-1">
         <label className="text-sm font-medium">Card expirstion</label>
 
-        <input type="month" className="form_input" name="expiration" />
+        <input
+          type="month"
+          className="form_input bg-transparent md:bg-auto"
+          name="expiration"
+          value="2030-06"
+          id="picker"
+        />
       </div>
 
       <div className="flex flex-col gap-1">
@@ -37,8 +47,9 @@ export default function CardForm() {
       </div>
       <button
         type="submit"
-        className="w-full rounded-md bg-red-secondary py-2 text-white"
+        className="flex w-full items-center justify-center gap-2 rounded-md bg-red-secondary py-2 text-white"
       >
+        <Wechat />
         Pay Now
       </button>
     </form>

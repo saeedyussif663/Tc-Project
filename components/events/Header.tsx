@@ -9,11 +9,12 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
+import Filter from '../icons/filter';
 
 export default function Header() {
   return (
-    <header className="flex w-full items-center px-3 py-6 md:px-8">
-      <div className="flex gap-2 font-space-grotesk">
+    <header className="flex w-full items-center px-3 py-3 md:px-8 md:py-6">
+      <div className="flex items-center gap-2 font-space-grotesk">
         <Image
           src="/images/other-logo.png"
           alt="Logo"
@@ -30,7 +31,7 @@ export default function Header() {
           placeholder="Search events"
           className="w-full rounded-2xl bg-[#F2F2F2] px-12 py-2 font-open-sans text-gray"
         />
-        <ListFilter className="cursor-pointer text-gray" size={30} />
+        <Filter />
         <SearchIcon
           className="absolute bottom-[10px] left-3 cursor-pointer text-gray"
           size={20}
@@ -58,7 +59,7 @@ export default function Header() {
               type="text"
               name="search"
               placeholder="Search events"
-              className="w-full rounded-2xl bg-[#F2F2F2] px-12 py-2 font-open-sans text-gray"
+              className="w-full rounded-md bg-[#F2F2F2] px-12 py-2 font-open-sans text-gray"
             />
 
             <SearchIcon
@@ -67,7 +68,7 @@ export default function Header() {
             />
           </div>
           <div className="flex gap-8 text-gray">
-            <ListFilter className="cursor-pointer" size={26} />
+            <Filter />
             <div className="relative">
               <Bell className="cursor-pointer" size={26} />
               <span className="absolute bottom-3 left-3 flex h-5 w-5 items-center justify-center rounded-full bg-[#ED3737] text-white">

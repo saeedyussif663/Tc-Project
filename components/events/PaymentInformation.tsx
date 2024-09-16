@@ -13,7 +13,7 @@ export default function PaymentInformation() {
       <h3 className="text-xl font-semibold">Payment Information</h3>
       <article className="mt-4 flex flex-col gap-3">
         <h5 className="text-[#A7A7A7]">Payment Method:</h5>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-[10px]">
           {paymentMethods.map((method, index) => (
             <PaymentMethod
               key={index}

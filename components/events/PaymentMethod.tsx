@@ -15,7 +15,7 @@ export default function PaymentMethod({
 }: Props) {
   return (
     <div
-      className="flex cursor-pointer items-center gap-3"
+      className="flex w-fit cursor-pointer items-center gap-3"
       onClick={() => setPaymentType(method)}
     >
       <div

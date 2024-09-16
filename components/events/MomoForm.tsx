@@ -1,3 +1,5 @@
+import Wechat from '../icons/wechat';
+
 export default function MomoForm() {
   return (
     <form className="mt-4 flex flex-col gap-3">
@@ -21,8 +23,9 @@ export default function MomoForm() {
       </div>
       <button
         type="submit"
-        className="w-full rounded-md bg-red-secondary py-2 text-white"
+        className="flex w-full items-center justify-center gap-2 rounded-md bg-red-secondary py-2 text-white"
       >
+        <Wechat />
         Pay Now
       </button>
     </form>
