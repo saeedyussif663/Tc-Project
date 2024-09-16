@@ -18,7 +18,7 @@ export default function Tabs() {
     <section className="flex gap-8">
       {links.map((link, idx) => (
         <button
-          onClick={() => router.push(`/store?tab=${link}`)}
+          onClick={() => router.push(`/events?tab=${link}`)}
           key={idx}
           className={` ${activeTab === link ? 'rounded-md bg-red-secondary px-4 py-1 text-white' : 'text-gray'} `}
         >

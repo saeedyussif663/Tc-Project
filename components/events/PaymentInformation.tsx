@@ -9,7 +9,7 @@ import MomoForm from './MomoForm';
 export default function PaymentInformation() {
   const [paymentType, setPaymentType] = useState<PaymentTypes>('Credit Card');
   return (
-    <section className="w-[350px]">
+    <section className="flex w-[350px] flex-shrink-0 flex-col">
       <h3 className="text-xl font-semibold">Payment Information</h3>
       <article className="mt-4 flex flex-col gap-3">
         <h5 className="text-[#A7A7A7]">Payment Method:</h5>

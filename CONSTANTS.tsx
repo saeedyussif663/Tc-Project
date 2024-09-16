@@ -96,6 +96,8 @@ export const contactUs = {
   ],
 };
 
+export const tableHeadings = ['Product', 'Ticket Type', 'Amount', 'Price'];
+
 export const paymentMethods: ['Credit Card', 'Mobile Money'] = [
   'Credit Card',
   'Mobile Money',
