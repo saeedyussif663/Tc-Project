@@ -1,6 +1,9 @@
 'use client';
 
 import { tableHeadings } from '@/CONSTANTS';
+import { Minus, Plus } from 'lucide-react';
+import Image from 'next/image';
+import { useState } from 'react';
 import {
   Table,
   TableBody,
@@ -10,9 +13,6 @@ import {
   TableRow,
 } from '../ui/table';
 import Back from './Back';
-import { Minus, Plus } from 'lucide-react';
-import { useState } from 'react';
-import Image from 'next/image';
 
 export default function EventPayment() {
   const [ticketAmount, setTicketAmount] = useState<number>(1);
@@ -30,7 +30,7 @@ export default function EventPayment() {
   }
 
   return (
-    <section className="flex max-h-[500px] w-full flex-col gap-10 md:h-[81vh]">
+    <section className="flex w-full flex-col gap-10 md:h-[81vh]">
       <div className="relative">
         <Table className="mb-4">
           <TableHeader>
@@ -50,6 +50,7 @@ export default function EventPayment() {
                   alt="Event Image"
                   width={139}
                   height={89}
+                  priority
                   className="mr-4 hidden h-[89px] md:inline-block"
                 />
                 <div className="flex flex-col gap-[2px] font-open-sans">
@@ -68,11 +69,12 @@ export default function EventPayment() {
                 </div>
               </TableCell>
               <TableCell className="text-center">
-                <select className="ml-3 w-full bg-transparent text-center outline-none md:ml-0 md:w-3/4 md:text-left">
+                <select
+                  defaultValue="VVIP"
+                  className="ml-3 w-full bg-transparent text-center outline-none md:ml-0 md:w-3/4 md:text-left"
+                >
                   <option value="Regular">Regular</option>
-                  <option value="VVIP" selected>
-                    VVIP
-                  </option>
+                  <option value="VVIP">VVIP</option>
                 </select>
               </TableCell>
               <TableCell className="text-center md:text-left">

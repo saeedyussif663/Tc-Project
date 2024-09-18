@@ -1,11 +1,13 @@
 import Header from '@/components/events/Header';
+import PaymentToast from '@/components/events/PaymentToast';
 import { ReactNode } from 'react';
 
-export default function StoreLayout({ children }: { children: ReactNode }) {
+export default function eventsLayout({ children }: { children: ReactNode }) {
   return (
-    <main>
+    <main className="relative">
       <Header />
       {children}
+      <PaymentToast />
     </main>
   );
 }

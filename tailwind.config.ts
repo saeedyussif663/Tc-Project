@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      boxShadow: {
+        custom: '0 4px 8px 0px rgba(0, 0, 0, 0.3)',
+      },
       screens: {
         sm: '500px',
       },

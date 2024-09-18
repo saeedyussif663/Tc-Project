@@ -2,7 +2,7 @@
 
 export async function cardPayment(
   prevState: {
-    error: boolean;
+    err: null | boolean;
   },
   formData: FormData,
 ) {
@@ -13,5 +13,5 @@ export async function cardPayment(
     code: formData.get('code'),
   };
   console.log(data);
-  return { error: false };
+  return { err: true };
 }
