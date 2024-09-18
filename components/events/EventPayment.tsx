@@ -30,7 +30,7 @@ export default function EventPayment() {
   }
 
   return (
-    <section className="flex w-full flex-col gap-10 md:h-[81vh]">
+    <section className="flex max-h-[500px] w-full flex-col gap-10 md:h-[81vh]">
       <div className="relative">
         <Table className="mb-4">
           <TableHeader>
