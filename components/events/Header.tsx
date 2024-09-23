@@ -1,17 +1,13 @@
-import {
-  Bell,
-  Icon,
-  ListFilter,
-  Menu,
-  SearchIcon,
-  ShoppingCart,
-  UserPen,
-} from 'lucide-react';
+'use client';
+
+import { useToastStore } from '@/store';
+import { Bell, Menu, SearchIcon, ShoppingCart, UserPen } from 'lucide-react';
 import Image from 'next/image';
-import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
 import Filter from '../icons/filter';
+import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
 
 export default function Header() {
+  const showNotification = useToastStore((state) => state.showNotification);
   return (
     <header className="flex w-full items-center px-3 py-3 md:px-8 md:py-6">
       <div className="flex items-center gap-2 font-space-grotesk">
@@ -39,7 +35,11 @@ export default function Header() {
       </div>
       <div className="hidden gap-8 text-gray md:flex">
         <div className="relative">
-          <Bell className="cursor-pointer" size={26} />
+          <Bell
+            className="cursor-pointer"
+            size={26}
+            onClick={showNotification}
+          />
           <span className="absolute bottom-3 left-3 flex h-5 w-5 items-center justify-center rounded-full bg-[#ED3737] text-white">
             3
           </span>
