@@ -1,19 +1,18 @@
 'use client';
 
+import { getSession, resendOTTP, sendOTTp } from '@/actions/authActions';
 import AuthHeader from '@/components/auth/AuthHeader';
-import Image from 'next/image';
+import { OttpButton } from '@/components/auth/Button';
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
 } from '@/components/ui/input-otp';
-import { useEffect, useState } from 'react';
-import { OttpButton } from '@/components/auth/Button';
-import { getSession, sendOTTp } from '@/actions/authActions';
-import { useRouter } from 'next/navigation';
-import { resendOTTP } from '@/actions/authActions';
-import { useFormState, useFormStatus } from 'react-dom';
 import { useToast } from '@/components/ui/use-toast';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useFormState, useFormStatus } from 'react-dom';
 
 interface InitialState {
   message: string;

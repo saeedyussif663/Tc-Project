@@ -9,7 +9,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       <SideBar />
       <MobileSidbebar />
 
-      <main className="md:ml-[200px] flex flex-col relative w-full  rounded-3xl  h-full">
+      <main className="relative flex h-full w-full flex-col rounded-3xl md:ml-[250px]">
         {children}
         <Menu />
       </main>

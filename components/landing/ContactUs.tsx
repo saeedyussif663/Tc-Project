@@ -1,4 +1,4 @@
-import { contactUs } from "@/CONSTANTS";
+import { contactUs } from '@/CONSTANTS';
 
 export default function ContactUs() {
   return (

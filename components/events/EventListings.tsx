@@ -1,6 +1,6 @@
-import Tabs from './Tabs';
-import EventItem from './EventItem';
 import { Suspense } from 'react';
+import EventItem from './EventItem';
+import Tabs from './Tabs';
 
 export default function EventListings() {
   return (

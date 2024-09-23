@@ -1,6 +1,6 @@
 import { ChevronDown, Menu } from 'lucide-react';
-import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
 import Link from 'next/link';
+import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
 
 export default function MobileNav() {
   return (

@@ -1,10 +1,10 @@
 'use client';
 
 import { paymentMethods, PaymentTypes } from '@/CONSTANTS';
-import PaymentMethod from './PaymentMethod';
 import { useState } from 'react';
 import CardForm from './CardForm';
 import MomoForm from './MomoForm';
+import PaymentMethod from './PaymentMethod';
 
 export default function PaymentInformation() {
   const [paymentType, setPaymentType] = useState<PaymentTypes>('Credit Card');

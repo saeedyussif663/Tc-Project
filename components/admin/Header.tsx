@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <header className="h-[68px] px-4 border-b-gray flex items-center border-b text-primary">
+    <header className="text-primary flex h-[68px] items-center border-b border-b-gray px-4">
       Header
     </header>
   );
