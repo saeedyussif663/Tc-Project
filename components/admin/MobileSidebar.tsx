@@ -38,7 +38,7 @@ export default function MobileSidbebar() {
           <NavLink key={index} name={link.name} icon={link.icon} />
         ))}
       </div>
-      <div className="absolute bottom-10 flex flex-col gap-3 border border-red-secondary">
+      <div className="mt-auto flex flex-col gap-3 border border-red-secondary">
         <div className="flex items-center gap-3">
           <Avatar className="size-8">
             <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
