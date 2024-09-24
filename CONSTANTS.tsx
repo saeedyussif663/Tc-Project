@@ -119,3 +119,14 @@ export const dashboardLinks = [
   { name: 'user', icon: <UsersIcon /> },
   { name: 'promotion', icon: <PromotionIcon /> },
 ];
+
+export const eventTypes = [
+  'Music',
+  'Sports',
+  'Conference',
+  'Workshop',
+  'Seminar',
+  'Festival',
+  'Party',
+  'Others',
+];

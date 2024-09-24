@@ -26,6 +26,14 @@ thead::after {
   .form_input {
     @apply rounded-md border border-[#B8B8B8] px-2 py-[6px] text-[#B8B8B8];
   }
+
+  .event_input {
+    @apply rounded-xl bg-[#F2F2F2] px-4 py-2 text-gray;
+  }
+}
+
+.dashed-border {
+  border: 1px dashed #f2545b;
 }
 
 .hero-height {
