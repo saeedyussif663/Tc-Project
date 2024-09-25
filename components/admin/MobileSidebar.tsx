@@ -1,12 +1,12 @@
 'use client';
+import { dashboardLinks } from '@/CONSTANTS';
 import { useSidebarStore } from '@/store';
+import { AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
 import Image from 'next/image';
 import Accounttype from '../icons/accounttype';
-import { dashboardLinks } from '@/CONSTANTS';
-import NavLink from './NavLink';
-import { Avatar } from '../ui/avatar';
-import { AvatarImage } from '@radix-ui/react-avatar';
 import LogoutIcon from '../icons/logoutIcon';
+import { Avatar } from '../ui/avatar';
+import NavLink from './NavLink';
 
 export default function MobileSidbebar() {
   const isSidebarShowing = useSidebarStore((state) => state.isSidebarShowing);
@@ -38,9 +38,10 @@ export default function MobileSidbebar() {
           <NavLink key={index} name={link.name} icon={link.icon} />
         ))}
       </div>
-      <div className="mt-auto flex flex-col gap-3 border border-red-secondary">
+      <div className="absolute bottom-32 flex flex-col gap-3">
         <div className="flex items-center gap-3">
           <Avatar className="size-8">
+            <AvatarFallback>SC</AvatarFallback>
             <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
           </Avatar>
           <p className="text-wrap text-sm">serlomcecil@gmail.com</p>

@@ -1,10 +1,9 @@
+import { dashboardLinks } from '@/CONSTANTS';
 import Image from 'next/image';
 import Accounttype from '../icons/accounttype';
-import { dashboardLinks } from '@/CONSTANTS';
-import { Separator } from '../ui/separator';
-import NavLink from './NavLink';
 import LogoutIcon from '../icons/logoutIcon';
-import { Avatar, AvatarImage } from '../ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import NavLink from './NavLink';
 
 export default function SideBar() {
   return (
@@ -36,6 +35,7 @@ export default function SideBar() {
       <div className="mt-auto flex flex-col gap-3">
         <div className="flex items-center gap-3">
           <Avatar className="size-8">
+            <AvatarFallback>SN</AvatarFallback>
             <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
           </Avatar>
           <p className="text-wrap text-sm">serlomcecil@gmail.com</p>
