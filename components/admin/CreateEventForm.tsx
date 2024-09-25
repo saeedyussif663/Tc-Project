@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
 import CloudIcon from '../icons/cloudIcon';
+import { Input } from '../ui/input';
 
 export default function CreateEventForm() {
   const [imageValue, setImageValue] = useState('');
@@ -87,10 +88,16 @@ export default function CreateEventForm() {
               <label className="text-sm">
                 Event start date <span className="text-red-secondary">*</span>
               </label>
+              <Input
+                type="date"
+                name="start_date"
+                className="event_input md:hidden"
+                required
+              />
               <input
                 type="date"
                 name="start_date"
-                className="event_input"
+                className="event_input hidden md:block"
                 required
               />
             </div>
@@ -98,10 +105,16 @@ export default function CreateEventForm() {
               <label className="text-sm">
                 Event start Time <span className="text-red-secondary">*</span>
               </label>
+              <Input
+                type="time"
+                name="start_time"
+                className="event_input md:hidden"
+                required
+              />
               <input
                 type="time"
                 name="start_time"
-                className="event_input"
+                className="event_input hidden md:block"
                 required
               />
             </div>
@@ -113,10 +126,16 @@ export default function CreateEventForm() {
               <label className="text-sm">
                 Event end date <span className="text-red-secondary">*</span>
               </label>
+              <Input
+                type="date"
+                name="end_date"
+                className="event_input md:hidden"
+                required
+              />
               <input
                 type="date"
                 name="end_date"
-                className="event_input"
+                className="event_input hidden md:block"
                 required
               />
             </div>
@@ -124,10 +143,17 @@ export default function CreateEventForm() {
               <label className="text-sm">
                 Event end Time <span className="text-red-secondary">*</span>
               </label>
+
+              <Input
+                type="time"
+                name="end_time"
+                className="event_input md:hidden"
+                required
+              />
               <input
                 type="time"
                 name="end_time"
-                className="event_input"
+                className="event_input hidden md:block"
                 required
               />
             </div>
