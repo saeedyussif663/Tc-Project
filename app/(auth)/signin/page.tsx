@@ -1,6 +1,4 @@
 import AuthHeader from '@/components/auth/AuthHeader';
-import Oauth from '@/components/auth/Oauth';
-import Seperator from '@/components/auth/Seperator';
 import SigninForm from '@/components/auth/SigninForm';
 
 export default function page() {

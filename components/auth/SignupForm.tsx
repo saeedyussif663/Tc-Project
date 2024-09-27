@@ -1,18 +1,18 @@
 'use client';
 
-import Link from 'next/link';
-import { FaRegEyeSlash } from 'react-icons/fa';
-import { useEffect, useState } from 'react';
-import { IoEyeOutline } from 'react-icons/io5';
-import AgreeTerms from './AgreeTerms';
-import { passwordScorer } from 'password-scorer';
-import PasswordScore from './PasswordScore';
 import { createUserAction } from '@/actions/authActions';
-import { useFormState } from 'react-dom';
-import { SignupButton } from './Button';
-import PhoneInput from 'react-phone-number-input';
 import { useToast } from '@/components/ui/use-toast';
+import Link from 'next/link';
+import { passwordScorer } from 'password-scorer';
+import { useEffect, useState } from 'react';
+import { useFormState } from 'react-dom';
+import { FaRegEyeSlash } from 'react-icons/fa';
+import { IoEyeOutline } from 'react-icons/io5';
+import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
+import AgreeTerms from './AgreeTerms';
+import { SignupButton } from './Button';
+import PasswordScore from './PasswordScore';
 
 const initialState = {
   message: '',

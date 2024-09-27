@@ -4,6 +4,8 @@ import { tableHeadings } from '@/CONSTANTS';
 import { Minus, Plus } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
+
+import Back from './Back';
 import {
   Table,
   TableBody,
@@ -12,7 +14,6 @@ import {
   TableHeader,
   TableRow,
 } from '../ui/table';
-import Back from './Back';
 
 export default function EventPayment() {
   const [ticketAmount, setTicketAmount] = useState<number>(1);

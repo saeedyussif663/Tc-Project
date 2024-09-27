@@ -17,7 +17,7 @@ export default function EventCard({ color }: { color: string }) {
         className={`flex h-[72px] items-center justify-around rounded-b-2xl ${color}`}
       >
         <h4 className="font-sans-jarkata text-lg text-white">
-          Standard <span className="font-open-sans block">Events</span>
+          Standard <span className="block font-open-sans">Events</span>
         </h4>
         <span className="flex items-center justify-center rounded-full bg-white p-3">
           <ChevronDown />

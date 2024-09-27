@@ -12,7 +12,7 @@ export default function PaymentToast() {
   if (type === 'error') {
     return (
       <div
-        className={`shadow-custom ${isShowing ? 'translate-y-0' : '-translate-y-40'} duration-500 transition-all absolute right-5 top-4 z-[1000] flex h-[128px] w-[320px] gap-4 rounded-md bg-white font-sans-jarkata sm:w-[382px]`}
+        className={`shadow-custom ${isShowing ? 'translate-y-0' : '-translate-y-40'} absolute right-5 top-4 z-[1000] flex h-[128px] w-[320px] gap-4 rounded-md bg-white font-sans-jarkata transition-all duration-500 sm:w-[382px]`}
       >
         <div className="flex h-full w-[48px] items-center justify-center rounded-s-lg bg-[#FFDCE4]">
           <ErrorIcon />
@@ -36,7 +36,7 @@ export default function PaymentToast() {
 
   if (type === 'success') {
     return (
-      <div className="shadow-custom absolute right-5 top-4 z-[1000] flex h-[128px] w-[320px] gap-4 rounded-md bg-white font-sans-jarkata sm:w-[382px]">
+      <div className="absolute right-5 top-4 z-[1000] flex h-[128px] w-[320px] gap-4 rounded-md bg-white font-sans-jarkata shadow-custom sm:w-[382px]">
         <div className="flex h-full w-[48px] items-center justify-center rounded-s-lg bg-[#FFDCE4]">
           <SuccessIcon />
         </div>

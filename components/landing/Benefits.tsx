@@ -1,6 +1,6 @@
 import { benefits } from '@/CONSTANTS';
-import BenefitItem from './BenefitItem';
 import Image from 'next/image';
+import BenefitItem from './BenefitItem';
 
 export default function Benefits() {
   return (

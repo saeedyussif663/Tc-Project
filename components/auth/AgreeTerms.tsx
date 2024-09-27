@@ -17,7 +17,7 @@ export default function AgreeTerms({
         checked={isChecked}
         onChange={() => setIsChecked((prev) => !prev)}
       />
-      <p className="text-black100 text-sm text-opacity-40">
+      <p className="text-sm text-black100 text-opacity-40">
         I Accept the <span className="text-red-secondary">Terms</span>
       </p>
     </div>

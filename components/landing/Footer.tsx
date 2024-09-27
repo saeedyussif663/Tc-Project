@@ -1,7 +1,6 @@
 import Image from 'next/image';
-import UsefulLinks from './UsefulLinks';
-import { contactUs } from '@/CONSTANTS';
 import ContactUs from './ContactUs';
+import UsefulLinks from './UsefulLinks';
 
 export default function Footer() {
   return (

@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { usefulLinks } from '@/CONSTANTS';
+import Link from 'next/link';
 
 export default function UsefulLinks() {
   return (

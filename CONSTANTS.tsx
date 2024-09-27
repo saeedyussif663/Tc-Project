@@ -1,4 +1,10 @@
 import { User as NextAuthUser } from 'next-auth';
+import DashboardIcon from './components/icons/dashboardIcon';
+import EventsIcon from './components/icons/eventsIcon';
+import OrdersIcon from './components/icons/ordersIcon';
+import DiscountIcon from './components/icons/discountIcon';
+import UsersIcon from './components/icons/usersIcon';
+import PromotionIcon from './components/icons/promotionIcon';
 
 export interface Benefits {
   heading: string;
@@ -104,3 +110,23 @@ export const paymentMethods: ['Credit Card', 'Mobile Money'] = [
 ];
 
 export type PaymentTypes = 'Credit Card' | 'Mobile Money';
+
+export const dashboardLinks = [
+  { name: 'dashboard', icon: <DashboardIcon /> },
+  { name: 'events', icon: <EventsIcon /> },
+  { name: 'orders', icon: <OrdersIcon /> },
+  { name: 'discount', icon: <DiscountIcon /> },
+  { name: 'user', icon: <UsersIcon /> },
+  { name: 'promotion', icon: <PromotionIcon /> },
+];
+
+export const eventTypes = [
+  'Music',
+  'Sports',
+  'Conference',
+  'Workshop',
+  'Seminar',
+  'Festival',
+  'Party',
+  'Others',
+];
