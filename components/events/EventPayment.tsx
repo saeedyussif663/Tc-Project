@@ -13,6 +13,7 @@ import {
   TableHeader,
   TableRow,
 } from '../ui/table';
+import Back from './Back';
 
 export default function EventPayment() {
   const [ticketAmount, setTicketAmount] = useState<number>(1);
@@ -114,7 +115,7 @@ function Amount({
   return (
     <article className="mt-auto flex items-end justify-between">
       <Back />
-      <div>
+      <div className="md:w-[200px]">
         <div className="flex flex-col gap-2 border-b-[0.5px] border-[#A7A7A7] pb-2">
           <div className="flex items-baseline justify-between gap-4 font-semibold">
             <span className="text-sm text-[#A7A7A7]">Subtotal:</span>
