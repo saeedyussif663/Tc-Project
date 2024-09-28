@@ -4,6 +4,7 @@ import { tableHeadings } from '@/CONSTANTS';
 import { Minus, Plus } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
+import Wechat from '../icons/wechat';
 import {
   Table,
   TableBody,
@@ -30,7 +31,7 @@ export default function EventPayment() {
   }
 
   return (
-    <section className="flex w-full flex-col gap-10 md:h-[81vh]">
+    <section className="flex w-full flex-col gap-10">
       <div className="relative">
         <Table className="mb-4">
           <TableHeader>
@@ -129,6 +130,9 @@ function Amount({
           <span className="text-lg md:text-2xl">Total:</span>
           <p className="font text-lg md:text-xl">${price * ticketAmount}</p>
         </div>
+        <button className="mt-4 flex w-full items-center justify-center gap-2 rounded-md bg-red-secondary py-2 text-white">
+          <Wechat /> Pay Now
+        </button>
       </div>
     </article>
   );
