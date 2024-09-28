@@ -1,10 +1,10 @@
-import type { Metadata } from 'next';
-import '../globals.css';
 import AuthLayout from '@/components/auth/AuthLayout';
 import { Toaster } from '@/components/ui/toaster';
-import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/utils';
+import type { Metadata } from 'next';
+import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
+import '../globals.css';
 
 export const metadata: Metadata = {
   title: 'Tc Project | Auth',

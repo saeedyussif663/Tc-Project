@@ -8,3 +8,9 @@ export const useToastStore = create((set) => ({
   showNotification: () => set((state) => ({ isNotificationShowing: true })),
   removeNotification: () => set((state) => ({ isNotificationShowing: false })),
 }));
+
+export const useSidebarStore = create((set) => ({
+  isSidebarShowing: false,
+  toggleSidebar: () =>
+    set((state) => ({ isSidebarShowing: !state.isSidebarShowing })),
+}));

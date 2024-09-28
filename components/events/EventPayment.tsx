@@ -13,7 +13,6 @@ import {
   TableHeader,
   TableRow,
 } from '../ui/table';
-import Back from './Back';
 
 export default function EventPayment() {
   const [ticketAmount, setTicketAmount] = useState<number>(1);

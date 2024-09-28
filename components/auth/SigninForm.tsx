@@ -1,13 +1,12 @@
 'use client';
 
+import { signIn } from 'next-auth/react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { FaRegEyeSlash } from 'react-icons/fa';
 import { IoEyeOutline } from 'react-icons/io5';
-import Button from './Button';
-import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
 import { useToast } from '../ui/use-toast';
 
 interface Inputs {

@@ -1,7 +1,7 @@
-import type { Metadata } from 'next';
-import { Space_Grotesk, Plus_Jakarta_Sans, Open_Sans } from 'next/font/google';
-import './globals.css';
 import Provider from '@/components/ui/Provider';
+import type { Metadata } from 'next';
+import { Open_Sans, Plus_Jakarta_Sans, Space_Grotesk } from 'next/font/google';
+import './globals.css';
 
 const space_grotesk = Space_Grotesk({
   subsets: ['latin'],
