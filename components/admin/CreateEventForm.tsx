@@ -20,7 +20,7 @@ export default function CreateEventForm() {
   }
 
   return (
-    <article className="mt-4">
+    <article className="mt-16 px-4 py-4 md:mt-0 md:px-8">
       <h3 className="font-semibold">Create an Event</h3>
       <form
         className="mt-4 flex flex-col gap-x-8 md:flex-row"
