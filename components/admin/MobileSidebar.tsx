@@ -1,11 +1,10 @@
 'use client';
 import { dashboardLinks } from '@/CONSTANTS';
 import { useSidebarStore } from '@/store';
-import { AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
 import Image from 'next/image';
 import Accounttype from '../icons/accounttype';
 import LogoutIcon from '../icons/logoutIcon';
-import { Avatar } from '../ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import NavLink from './NavLink';
 
 export default function MobileSidbebar() {
