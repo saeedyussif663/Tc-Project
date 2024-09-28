@@ -108,7 +108,7 @@ export default function CreateEventForm() {
               <Input
                 type="time"
                 name="start_time"
-                className="event_input md:hidden"
+                className="event_input w-full md:hidden"
                 required
               />
               <input
