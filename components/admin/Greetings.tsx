@@ -1,5 +1,3 @@
-'use client';
-
 export default function Greetings() {
   return (
     <div className="font-sans-jarkata">
