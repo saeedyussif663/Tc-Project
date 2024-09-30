@@ -9,7 +9,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       <SideBar />
       <MobileSidbebar />
 
-      <main className="flex h-full w-full flex-col rounded-3xl font-open-sans md:ml-[250px]">
+      <main className="flex h-full w-screen flex-col rounded-3xl font-open-sans md:ml-[250px]">
         <HamburgerIcon />
         {children}
       </main>
