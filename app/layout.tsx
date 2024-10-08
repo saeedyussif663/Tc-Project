@@ -33,7 +33,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <Provider>
         <body
-          className={`${space_grotesk.variable} ${jakarta_sans.variable} ${open_sans.variable} mx-auto max-w-screen-2xl overflow-x-hidden`}
+          className={`${space_grotesk.variable} ${jakarta_sans.variable} ${open_sans.variable} overflow-x-hidden`}
         >
           {children}
         </body>

@@ -5,7 +5,7 @@ import { ReactNode } from 'react';
 
 export default function eventsLayout({ children }: { children: ReactNode }) {
   return (
-    <main className="relative">
+    <main className="relative mx-auto max-w-screen-xl">
       <Header />
       {children}
       <PaymentToast />

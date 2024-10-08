@@ -6,7 +6,7 @@ import HeroSection from '@/components/landing/HeroSection';
 
 export default function Home() {
   return (
-    <main className="overflow-x-hidden pb-10">
+    <main className="mx-auto max-w-screen-xl overflow-x-hidden pb-10">
       <Header />
       <HeroSection />
       <Benefits />
