@@ -23,26 +23,26 @@ export const metadata: Metadata = {
   description: 'An event ticketing platform',
   metadataBase: new URL('https://tc-project-phi.vercel.app/'),
   keywords: ['Tc, Events, Tickets'],
-  openGraph: {
-    title: 'Tc Project',
-    description: 'An event ticketing platform',
-    url: 'https://tc-project-phi.vercel.app/',
-    siteName: 'Tc Project',
-    images: [
-      {
-        url: '/images/site.png',
-        width: 800,
-        height: 600,
-      },
-      {
-        url: '/images/site.png',
-        width: 1800,
-        height: 1600,
-      },
-    ],
-    locale: 'en_US',
-    type: 'website',
-  },
+  // openGraph: {
+  //   title: 'Tc Project',
+  //   description: 'An event ticketing platform',
+  //   url: 'https://tc-project-phi.vercel.app/',
+  //   siteName: 'Tc Project',
+  //   images: [
+  //     {
+  //       url: '/images/site.png',
+  //       width: 800,
+  //       height: 600,
+  //     },
+  //     {
+  //       url: '/images/site.png',
+  //       width: 1800,
+  //       height: 1600,
+  //     },
+  //   ],
+  //   locale: 'en_US',
+  //   type: 'website',
+  // },
 };
 
 export default function RootLayout({
