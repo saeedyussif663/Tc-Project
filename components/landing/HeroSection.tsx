@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Wechat from '../icons/wechat';
 import EventCard from './EventCard';
 
@@ -14,10 +15,13 @@ export default function HeroSection() {
           Gateway to Unforgettable Experiences! Explore, Discover, and Create
           Lasting Memories with Every Ticket Purchase.
         </span>
-        <button className="flex items-center gap-2 rounded-md bg-red-secondary px-10 py-3 font-semibold text-white">
+        <Link
+          href="/accounttype"
+          className="flex items-center gap-2 rounded-md bg-red-secondary px-10 py-3 font-semibold text-white"
+        >
           <Wechat />
           Get Started
-        </button>
+        </Link>
       </article>
       <section className="w-6xl mx-auto mt-24 flex flex-col flex-wrap items-center justify-between gap-x-6 gap-y-12 px-4 sm:px-8 md:flex-row">
         <EventCard color="bg-red-secondary" />

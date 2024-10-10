@@ -66,6 +66,7 @@ export default function SignupForm() {
           required
           autoComplete="off"
         />
+
         <PhoneInput
           placeholder="Enter phone number"
           defaultCountry="GH"

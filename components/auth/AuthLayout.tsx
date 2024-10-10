@@ -2,8 +2,9 @@ import Image from 'next/image';
 
 export default function AuthLayout() {
   return (
-    <section className="my-auto hidden h-[94%] w-1/2 flex-col justify-around rounded-lg bg-red-secondary pl-12 font-sans-jarkata text-white md:flex 2xl:w-4/6">
+    <section className="my-auto hidden h-[94%] w-1/2 flex-col justify-between rounded-lg bg-red-secondary py-4 pl-12 font-sans-jarkata text-white md:flex 2xl:w-4/6 2xl:py-6">
       <h1 className="font-space-grotesk text-2xl font-bold">Tc Ticket</h1>
+
       <div className="mt-8 font-sans-jarkata">
         <h2 className="text-[32px] font-medium">
           Start your <br />
@@ -14,6 +15,7 @@ export default function AuthLayout() {
           event organised tc ticket
         </p>
       </div>
+
       <div className="w-4/5 rounded-md bg-[#C7363C] px-6 py-4">
         <p className="text-[15px]">
           Simply unbeliunbelievable! I am really satisfied with my projects and
